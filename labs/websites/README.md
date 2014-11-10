@@ -3,7 +3,7 @@ Creating and Calling a Custom REST API with Azure WebSites
 
 "Azure Websites is a fully managed Platform-as-a-Service (PaaS) that enables you to build, deploy and scale enterprise-grade web Apps in seconds. Focus on your application code, and let Azure take care of the infrastructure to scale and securely run it for you."
 
-First you'll create a custom RESTful Web Service using Node.js and host it in Azure WebSites. Next you will connect to and consume that service from your Tessel microcontroller.
+First you'll create a custom RESTful Web Service using Node.js and host it in Azure WebSites. Next we will connect to and consume that service from your Tessel microcontroller.
 
 Prerequisites
 -------------
@@ -15,13 +15,13 @@ In order to successfully complete this lab you need to:
 Instructions
 ------------
 
-In this lab you will use the new [Azure Portal](http://portal.azure.com) for all server side activities, including:
+In this lab we will use the new [Azure Portal](http://portal.azure.com) for all server side activities, including:
 
 * Creating an Azure WebSite
 * Writing a simple Node.js RESTful Web Service
 * Invoking and debugging your service
 
-Allthough you do this from within the Azure Portal there are plenty of other ways you can achieve the same thing, for example: create the website using Azure-CLI (Azure x-plat) or deploy custom code using Git. See the section Extra Workout
+Allthough we do this from within the Azure Portal there are plenty of other ways you can achieve the same thing, for example: create the website using Azure-CLI (Azure x-plat) or deploy custom code using Git. Have a look at the section about additional references at the end of this lab for more information.
 
 ### Creating a new Azure Website
 
@@ -93,7 +93,7 @@ Congratulations, you have now created, hosted and invoked a custom Web Service u
 
 ### Connecting Tessel to our Custom API in mobile services
 
-Let's now call the custom RESTful Web API from your Tessel. The sample code is located in the [tessel](tessel) folder. Examine the code and change the URL to point to your custom API. Run the code:
+Let's now call the custom RESTful Web API from our Tessel. The sample code is located in the [tessel](tessel) folder. Examine the code and change the URL to point to your custom API. Run the code:
 
 	cd tessel
 	tessel run blinky-websites.js
