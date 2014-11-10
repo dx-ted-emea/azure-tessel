@@ -46,7 +46,7 @@ Instructions
 * Wait a couple of minutes for the VM to be ready. Check the portal to note the hostname that corresponds to the VM.
 ![VM Starting](images/RunningClientVM.png)
 
-* Once the VM gets the 'Running' status use Putty to connect to the VM by selecting the private key file in the Category/Connection/SSH/Auth box and entering the host name including the '.cloudapp.net' extensions. It might take a couple of minutes before the connection can be made. In case no connection can be made, double check to see if the hostname got an extension in the name like 'dockerclientvm-**f6k88f4w**' (this would be added for uniqueness in the DNS registery).
+* Once the VM gets the 'Running' status use PuTTY to connect to the VM by selecting the private key file in the Category/Connection/SSH/Auth box and entering the host name including the '.cloudapp.net' extensions. It might take a couple of minutes before the connection can be made. In case no connection can be made, double check to see if the hostname got an extension in the name like 'dockerclientvm-**f6k88f4w**' (this would be added for uniqueness in the DNS registery). Also check that you set the Auth keyfile last when using the load/save feature of PuTTY
 ![VM Starting](images/Putty.png)
 
 * Connect to the Linux VM using Putty. 
@@ -54,6 +54,7 @@ Instructions
 
 Update the package manager in the VM and install Node.js using the following commands:
 
+    sudo apt-get update
     sudo apt-get install nodejs-legacy
     sudo apt-get install npm
 
