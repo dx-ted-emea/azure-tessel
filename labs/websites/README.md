@@ -21,7 +21,7 @@ In this lab we will use the new [Azure Portal](http://portal.azure.com) for all 
 * Writing a simple Node.js RESTful Web Service
 * Invoking and debugging your service
 
-Allthough we do this from within the Azure Portal there are plenty of other ways you can achieve the same thing, for example: create the website using Azure-CLI (Azure x-plat) or deploy custom code using Git. See the section Extra Workout
+Allthough we do this from within the Azure Portal there are plenty of other ways you can achieve the same thing, for example: create the website using Azure-CLI (Azure x-plat) or deploy custom code using Git. Have a look at the section about additional references at the end of this lab for more information.
 
 ### Creating a new Azure Website
 
@@ -93,7 +93,7 @@ Congratulations, you have now created, hosted and invoked a custom Web Service u
 
 ### Connecting Tessel to our Custom API in mobile services
 
-Let's now call the custom RESTful Web API from your Tessel. The sample code is located in the [tessel](tessel) folder. Examine the code and change the URL to point to your custom API. Run the code:
+Let's now call the custom RESTful Web API from our Tessel. The sample code is located in the [tessel](tessel) folder. Examine the code and change the URL to point to your custom API. Run the code:
 
 	cd tessel
 	tessel run blinky-websites.js
@@ -123,9 +123,9 @@ Summary
 -------
 You have:
 
-*Created an Azure Website
-*Created a Node.JS RESTful API service with Visual Studio Online and deployed it on Azure Websites
-*Created a program that calls this Node.JS service and makes the Tessel Microcontroller led blink
-*Deployed the program on your Tessel Microcontroller and ran it
+* Created an Azure Website
+* Created a Node.JS RESTful API service with Visual Studio Online and deployed it on Azure Websites
+* Created a program that calls this Node.JS service and makes the Tessel Microcontroller led blink
+* Deployed the program on your Tessel Microcontroller and ran it
 
 __Go ahead and play with the solution. Tweak it, extend it, use it in a bigger context. Have fun!__

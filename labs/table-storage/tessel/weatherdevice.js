@@ -30,7 +30,7 @@ function getConfig() {
 	setLed(apiCallLed, true);
 	console.log('INFO Retrieving configuration...');
 
-	var url = apiUrl + '?deviceId=' + deviceId;
+	var url = apiUrl + '?deviceId=' + tessel.deviceId();
 
 	httpGetJSON(url, function(err, result) {
 		if (!err && result.authorized) {

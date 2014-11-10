@@ -1,7 +1,7 @@
 Creating and Calling a Custom REST API with Azure Mobile Services
 =================================================================
 
-"With Mobile Services, it’s easy to rapidly build engaging cross-platform and native apps for iOS, Android, Windows or Mac, store app data in the cloud or on-premises, authenticate users, send push notifications, as well as add your custom backend logic in C# or Node.js."
+_With Mobile Services, it’s easy to rapidly build engaging cross-platform and native apps for iOS, Android, Windows or Mac, store app data in the cloud or on-premises, authenticate users, send push notifications, as well as add your custom backend logic in C# or Node.js._
 
 During this hands on lab you'll learn how to create your own REST API and host it in Microsoft Azure Mobile Services and communicate with that service from your Tessel microcontroller.
 
@@ -38,7 +38,7 @@ Let's create a really simple REST API named "random" that responds with a random
 
 	azure mobile api create [servicename] random --permissions get=public
 
-_This creates a placeholder for us to upload/write our own JavaScript/Node.js code. By setting the --permissions flag to get=public, we open up the service for being accessed without any authentication using the HTTP GET Verb._
+_This creates a placeholder for us to upload/write our own JavaScript/Node.js code. By setting the "permissions" flag to public get access, we open up the service for being accessed without any authentication using the HTTP GET Verb._
 
 For this lab, we have provided you with a simple implementation of the random service so you don' have to write that. Examine the file [api/random.js](api/random.js) and familiarize yourself with what it does.
 
@@ -81,14 +81,10 @@ Summary
 -------
 You have: 
 
-*Created a Node.js based Azure Mobile Service
-*Created a RESTful API, hosted on your Azure Mobile Services
-*Deployed a Node.js program to your Tessel that calls out to the cloud and receives random numbers.
+* Created a Node.js based Azure Mobile Service
+* Created a RESTful API, hosted on your Azure Mobile Services
+* Deployed a Node.js program to your Tessel that calls out to the cloud and receives random numbers.
 
-<<<<<<< HEAD
-The lab [Uploading structured data to Azure Table Storage](../table-storage/) also make use of a Mobile Serivce hosted API but uses the portal to create the API instead of through Azure-CLI. Make sure you have a look at that one as well to learn even more about Mobile Services.
+The lab [Uploading structured data to Azure Table Storage](../table-storage/) also make use of a Mobile Service hosted API but uses the portal to create the API instead Azure-CLI. Have a look at that lab as well to learn more about Mobile Services.
 
-Now, go ahead and play around with the solution. Tweak it, extend it, use it in a bigger context. Good luck!
-=======
-_Go ahead and play around with the solution. Tweak it, extend it, use it in a bigger context. Have fun!_
->>>>>>> 1571c51f6cd0bcbfb8ce525923b9bdef1c7b8937
+__Go ahead and play around with the solution. Tweak it, extend it, use it in a bigger context. Have fun!__
