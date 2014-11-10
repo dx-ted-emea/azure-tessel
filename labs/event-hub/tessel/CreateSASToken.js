@@ -1,10 +1,10 @@
 var crypto = require('crypto');
 
 // Event Hubs parameters
-var namespace = 'RobEichDevEventHub-ns';
-var hubname ='demoeventhub';
-var eventHubAccessKeyName = 'EventHubKey';
-var eventHubAccessKey = 'mlHhCj6aAVgILAtwrxqnBSL5pfa5yJD3nhbN8CrTWZ0=';
+var namespace = 'YourNameSpaceHere';
+var hubname ='YourHubNameHere';
+var eventHubAccessKeyName = 'YourEventHubKeyNameHere';
+var eventHubAccessKey = 'YourSharedAccessKeyTokenHere';
 
 //Device-Id
 var deviceName = 'mytessel';
