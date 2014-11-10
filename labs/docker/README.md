@@ -62,32 +62,22 @@ Install Docker by running:
 
     sudo apt-get install docker.io
     
-* Confirm that Docker is installed buy running the command below  (use 'sudo docker' to see all the commands supported).
+Confirm that Docker is installed buy running the command below  (use 'sudo docker' to see all the commands supported).
+
     sudo docker version
+
+The result might look something like this:
 ![Docker installed](images/DockerInstalled.png)
 
-Let's kick off by running a container using this command:
+Let's kick off by running our first container:
 
     sudo docker run -i -t ubuntu /bin/bash 
 
-This last command downloads a standard ubuntu image from the public Docker hub and runs it in a container that is hooked up to the terminal by the '/bin/bash' parameter. Confirm this by checking the prompt stating 'root@[SOME CONTAINERID]'.  
+This command downloads a standard ubuntu image from the public Docker hub and runs it in a container that is hooked up to the terminal by the '/bin/bash' parameter. Confirm this by checking the prompt stating 'root@[SOME CONTAINERID]'.  
 
-We now have a container running on Azure. Our next step is to build our own image and turn the container running from that image into a Node.js server serving our REST API to the Tessel.
-
-### Optional: Using the Azure CLI tools from a Linux VM
-* We can use this Linux VM, instead of our local machine, also to manage Azure. To use this approach we must create an organizational account in Azure Active Directory and setup that to user as an Azure co-admin.
-
-Use the next command to install the Azure CLI on the VM or skip this step if you have a local VM running you want to use.
-
-    sudo npm install -g azure-cli
-
-* Confirm correct installation using the 'azure' command. 
-![Docker installed](images/AzureCLI.png)
-* Login with 'azure login [USERNAME] [PASSWORD]'.
-* Use this terminal to run the Azure CLI commands mentioned during the rest of the lab.
+We now have a container running on Azure. Our next step is to build our own image and turn the container running from that image into a Node.js server that serves our REST API to the Tessel.
 
 ### Provision a container host in Azure
-Now we have the client tools up and running we want to provision a VM that will act as our Container host. You could also run the Containers locally ofcourse, but in this lab we want to leverage the power of Azure to handle that task on potentialy huge numbers of VMs ranging from small to mega ships of containers, that's where Docker got its name from. To prevent us from having to use the web portal for provisioning virtual machines we use the Azure Cross-Platform Command-Line Interface to handle this from a single command.
 
 * Check the installation of the Azure CLI tools by running 'azure' in the terminal.
 
@@ -96,6 +86,27 @@ Make sure you are logged into the Azure portal using the account that is coupled
     azure account download
 
 If the browser does not start click [this link] to download it manually.
+
+### Optional: Using the Azure CLI tools from a Linux VM
+We can also use the Linux docker client VM , instead of our local machine, to manage Azure. To do so we need to copy the publish settings file we just downloaded to the Linux VM in Azure. Open a command prompt locally and run:
+ 
+    set PATH=c:\Program Files(x86)\PuTTY
+    pscp -i [PATH TO .PPK FILE] [PATH TO PUBLISH SETTINGS FILE]  [USER NAME]@[HOST NAME].cloudapp.net:/home/[USER NAME]/ 
+
+The tool pscp is part of the PuTTY installation. 
+  
+Use the next command to install the Azure CLI on the VM or skip this step if you have a local VM running you want to use (assuming you have the CLI tools already installed there).
+
+    sudo npm install -g azure-cli
+
+* Confirm correct installation using the 'azure' command. 
+![Docker installed](images/AzureCLI.png)
+
+* You can this terminal also to run the Azure CLI commands mentioned during the rest of the lab.
+
+Since we have the client tools up and running we want to provision a VM that will act as our Container host. You could also run the Containers locally ofcourse, but in this lab we want to leverage the power of Azure to handle that task on potentialy huge numbers of VMs ranging from small to mega ships of containers, that's where Docker got its name from. To prevent us from having to use the web portal for provisioning virtual machines we use the Azure Cross-Platform Command-Line Interface to handle this from a single command.
+
+
 Run the statement below to get access to your Azure subscription using the path to the publish settings file.
 
     azure account import [path to .publishsettings file]
@@ -215,6 +226,6 @@ Summary
 During this lab we have seen that with Docker we can containerize our deployments and thus make more efficient use of our cloud resources in Azure. Containerization enables us to run our application components (API's, Sites, Databases etc.) in lightweight isolated runtimes that are very easy to deploy, interconnect and move to wherever whenever we wish. Containerization can be considered the next step in Platform as a Service and with Azure this scenario is fully supported with Linux and in the near future on Windows VM's as well.
 [Azure portal]: http://portal.azure.com
 [Docker]: http://www.docker.io/
-[Putty]: http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe
+[Putty]: http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.63-installer.exe
 [PuttyGen]: http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe
 [this link]: http://go.microsoft.com/fwlink/?LinkId=254432
