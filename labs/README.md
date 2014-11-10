@@ -37,7 +37,7 @@ Microsoft Azure provides an awesome place for you to host many kinds of operatin
 
 [Uploading structured data to Azure Table Storage](table-storage)
 ------------------------------------------------
-
+Azure Table Storage is a NoSQL Database hosted in Azure, designed to store massive amounts of structured data and to handle high load. Creating custom APIs using Mobile Services, Azure Websites or Virtual Machines might be the first you think about, but other services can be used independently or in combination with those custom APIs. Having your clients make direct calls to Azure Table Storage will reduce load on your services. Although offloading other services, there are some tradeoffs. Since the clients are writing data directly to Azure Table Storage, you lose some control on the data that gets pushed to your service and you have to implement that in other ways, like using an asynchronous pattern to validate and clean up data. If storing structured data is what you are looking for, then you should definitively consider Azure Table Storage. This lab will show you the basics.
 
 [Sending Push Notifications to mobile devices using Notification Hub](notification-hub)
 -------------------------------------------------------------------
