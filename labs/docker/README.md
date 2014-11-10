@@ -5,17 +5,17 @@ Calling a REST API, running in a Docker container on Azure, directly from Tessel
 Containers are run from Docker images (just like a VM has as a source image file). You can write setup files called Dockerfiles that instruct Docker which steps and commands it should run to build up the image.
 
 ###Why care about Containers and Docker? 
-Docker makes it very simple to setup environments and make efficient use of the resource a VM has to offer. Once you have a host VM running you can run any number of containers on it that can startup very fast (think sub-second!).
+Docker makes it very simple to setup environments and make efficient use of the resource a VM has to offer. Once you have a host VM running you can run any number of containers on it and they can start very fast compared to spinning up virtual machines (think sub-second!).
 
-Why would I want to run my host VM on Azure?
-With Microsoft Azure you get a robust platform that let's you (auto)scale you deployments to any size you need with first class tooling (like Powershell, Puppet, Chef, DSC etc.) and high availability features build right in for both storage and compute. With Azure you also setup for a 99,95% SLA.
+Why would I want to run my container host VM on Azure?
+With Microsoft Azure you get a robust platform that let's you (auto)scale you deployments to any size you need with first class tooling (like Visual Studio, Powershell, Puppet, Chef, DSC etc.) and high availability features built-in for both storage and compute. With Azure you also setup for a 99,95% SLA.
 
 So the three selling point for Docker are:
-* Simplified deployment: Make your images and distribute them within your organization to run on any machine on any platform that has a modern Linux kernel running, again, a Windows version is coming.
-* Efficient use of resources: Instead of using a VMs as the computing unit we can host multiple Containers in a VM that each act as isolated pseudo VMs.
-* Since the VM kernel is shared amongst containers they can run instantly and have a very small footprint needing only your application's files and the packages that it depends on.
+* **Simplified deployment**: Make your images and distribute them within your organization to run on any machine on any platform that has a modern Linux kernel running, again, a Windows version is coming.
+* **Efficient use of resources**: Instead of using a VMs as the computing unit we can host multiple Containers in a VM that each act as isolated pseudo VMs.
+* Since the VM kernel is shared amongst containers they can run instantly and have a **very small footprint** needing only your application's files and the packages that it depends on.
 
-Microsoft Azure has full blown support for Linux VM's and therefore is an excellent environment to host containers. We have built-in support for docker in our cross platform command line tools so setting up Docker hosts on Azure is very easy.
+**Microsoft Azure has full blown support for Linux VM's and therefore is an excellent environment to host containers**. We have built-in support for docker in our cross platform command line tools and VM extensions so setting up Docker hosts on Azure is very easy.
 
 ----------------
 ### What's in this lab?
@@ -47,7 +47,7 @@ Instructions
 * Once the VM gets the 'Running' status use Putty to connect to the VM by selecting the private key file in the Category/Connection/SSH/Auth box and entering the host name including the '.cloudapp.net' extensions.
 ![VM Starting](images/Putty.png)
 
-* Connect to the Linux VM via Putty. 
+* Connect to the Linux VM using Putty. 
 ![VM Starting](images/LinuxClient.png)
 
 Update the package manager in the VM and install Node.js using the following commands:
@@ -114,19 +114,36 @@ After a couple of minutes, we have our host VM running, a storage account for th
 #### Building & running a container image 
 * Make sure the host VM is available by visiting the [Azure portal] and klik the browse button to go to the list of running VM. Select the VM with the hostname we used in the 'azure vm docker create' command. Also note both endpoints created from the command and the CLI tools and the Docker extension.
 
-To make our container available outside of the host we need to add another endpoint. Enter: 
+To make our container available outside of the host we need to add another endpoint for HTTP traffic. Enter: 
 
 	azure vm endpoint create -n "HTTP" "[vmhostname]" 80 80 
 
 This adds the endpoint for HTTP traffic through TCP port 80. You can check the portal website to confirm the creating of the endpoint. the -n is just an endpoint name. The options '80 80' refer to the mapping of an internal port (the one openen in the host VM) and external port (the one we can talk to from our Tessel client). The hostname is the DNS name without the '.cloudapp.net' extensions.
 
-* Check whether our Docker service is running by running:
+* Check whether our Docker host is running by running:
 
-	sudo docker --tls -H tcp://vmhostname.cloudapp.net:4243 info 
+	sudo docker --tls -H tcp://[VMHOSTNAME].cloudapp.net:4243 info 
 
 The --tls parameter lets us run a command on the host VM from the client console/terminal and this works because we already have the necessary certificates setup.
 
-We could use the tls command also to setup an image for our container on but a better approach would be to define a Dockerfile and let Docker manage the creation of the image. The Dockerfile instructs Docker what base image should be used and what command it must execute on top of the base image to create additional layers that ultimately make up the image that has all the parts our app needs to run. In our case this will be Node.js, NPM (the Node.js package manager) and our application script files.
+To prevent having to type (or copy/paste) the hostname in every command we can add it to an environment variable:
+
+	export DOCKER_HOST="tcp://[VMHOSTNAME].cloudapp.net:4243"
+
+And check if the following return the same result as before:
+
+	docker --tls info
+
+* Let's run a simple container (derived from an ultra-lightweight image called Busybox) in our new dedicated container host to check if it is setup correctly:
+
+	docker --tls run busybox echo hello world
+	
+We can check all containers on the host using:
+
+	docker --tls ps -a
+	
+	
+We could also use the tls command to setup an image for our container manually but a better, more reusablem, approach would be to define a so called Dockerfile and let Docker manage the creation of the image. The Dockerfile instructs Docker what base image should be used and what command it must execute on top of the base image to create additional layers that ultimately make up the image that has all the parts our app needs to run. In our case this will be Node.js, NPM (the Node.js package manager) and our application script files.
 
 Create a file named 'Dockerfile' (we use PICO as our texteditor):
 
@@ -153,7 +170,7 @@ Paste the following script in the Dockerfile:
 	
 Save the content of the file by pressing CTRL-O and exit pressing CTRL-X
 
-Add another file called start.sh. The commands in this script file are not cached by Docker (due to the CMD line in the Dockerfile) so we can update these steps faster since they will be executing on every 'run' command as we'il see later on.
+Add another file called start.sh. The commands in this script file are not cached by Docker (due to the CMD line in the Dockerfile) so we can update these steps faster since they will be executed  everytime we 'run' command as we'il see later on.
 
 	cat > start.sh
 	pico start.sh
