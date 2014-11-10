@@ -31,16 +31,18 @@ In order to successfully complete this lab you need to:
 
 Instructions
 ------------
-### Setup a client VM
+### Setup a docker client VM
 * Use PuttyGen to generate a SSH key and a derived key file. We will use these to setup and connect our VM later on.
 ![Portal gallery](images/PuttyGen.png)
  
-* Create a Linux VM by going to the Microsoft [Azure portal]. Click on the plus icon in lower left corner and select the 'Virtual machines' category. 
+* Create a Linux VM by going to the Microsoft [Azure portal]. Click on the plus icon (New) in lower left corner and select 'Virtual machines' in the Marketplace blade (blades are the sections that build up the horizontal portal segments.
 
-* In the list select 'Everything' so we can use the search feature to look for 'Ubuntu'. This will display all Ubuntu VM images available. Select the one with '14.04 LTS' in its name.
+* In the list select 'Everything' so we can use the search feature to look for 'Ubuntu'. This will display all Ubuntu VM images available. Select the one with '14.04 LTS' in its name and press the Create button ast the bottom.
 ![Portal gallery](images/UbuntuFound.png)
 
-* Configure the VM in the portal wizard so that it is hosted in a nearby region and has the SSH key configured we generated earlier.
+* Configure the VM in the portal wizard so that it is hosted in a nearby region and has the SSH key configured we generated earlie. Create a new storage account to store the VHD files that our VM machines will be run from. Click 'create' to start provisioning the docker client VM.
+![Portal gallery](images/VMConfig.png)
+
 * Wait a couple of minutes for the VM to be ready.
 ![VM Starting](images/VMStarting.png)
 
