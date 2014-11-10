@@ -5,17 +5,17 @@ Calling a REST API, running in a Docker container on Azure, directly from Tessel
 Containers are run from Docker images (just like a VM has as a source image file). You can write setup files called Dockerfiles that instruct Docker which steps and commands it should run to build up the image.
 
 ###Why care about Containers and Docker? 
-Docker makes it very simple to setup environments and make efficient use of the resource a VM has to offer. Once you have a host VM running you can run any number of containers on it that can startup very fast (think sub-second!).
+Docker makes it very simple to setup environments and make efficient use of the resource a VM has to offer. Once you have a host VM running you can run any number of containers on it and they can start very fast compared to spinning up virtual machines (think sub-second!).
 
-Why would I want to run my host VM on Azure?
-With Microsoft Azure you get a robust platform that let's you (auto)scale you deployments to any size you need with first class tooling (like Powershell, Puppet, Chef, DSC etc.) and high availability features build right in for both storage and compute. With Azure you also setup for a 99,95% SLA.
+Why would I want to run my container host VM on Azure?
+With Microsoft Azure you get a robust platform that let's you (auto)scale you deployments to any size you need with first class tooling (like Visual Studio, Powershell, Puppet, Chef, DSC etc.) and high availability features built-in for both storage and compute. With Azure you also setup for a 99,95% SLA.
 
 So the three selling point for Docker are:
-* Simplified deployment: Make your images and distribute them within your organization to run on any machine on any platform that has a modern Linux kernel running, again, a Windows version is coming.
-* Efficient use of resources: Instead of using a VMs as the computing unit we can host multiple Containers in a VM that each act as isolated pseudo VMs.
-* Since the VM kernel is shared amongst containers they can run instantly and have a very small footprint needing only your application's files and the packages that it depends on.
+* **Simplified deployment**: Make your images and distribute them within your organization to run on any machine on any platform that has a modern Linux kernel running, again, a Windows version is coming.
+* **Efficient use of resources**: Instead of using a VMs as the computing unit we can host multiple Containers in a VM that each act as isolated pseudo VMs.
+* Since the VM kernel is shared amongst containers they can run instantly and have a **very small footprint** needing only your application's files and the packages that it depends on.
 
-Microsoft Azure has full blown support for Linux VM's and therefore is an excellent environment to host containers. We have built-in support for docker in our cross platform command line tools so setting up Docker hosts on Azure is very easy.
+**Microsoft Azure has full blown support for Linux VM's and therefore is an excellent environment to host containers**. We have built-in support for docker in our cross platform command line tools and VM extensions so setting up Docker hosts on Azure is very easy.
 
 ----------------
 ### What's in this lab?
