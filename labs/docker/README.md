@@ -44,7 +44,7 @@ Instructions
 ![Portal gallery](images/VMConfig.png)
 
 * Wait a couple of minutes for the VM to be ready.
-![VM Starting](images/VMStarting.png)
+![VM Starting](images/RunningClientVM.png)
 
 * Once the VM gets the 'Running' status use Putty to connect to the VM by selecting the private key file in the Category/Connection/SSH/Auth box and entering the host name including the '.cloudapp.net' extensions.
 ![VM Starting](images/Putty.png)
