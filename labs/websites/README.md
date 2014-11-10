@@ -3,7 +3,7 @@ Creating and Calling a Custom REST API with Azure WebSites
 
 "Azure Websites is a fully managed Platform-as-a-Service (PaaS) that enables you to build, deploy and scale enterprise-grade web Apps in seconds. Focus on your application code, and let Azure take care of the infrastructure to scale and securely run it for you."
 
-First you'll create a custom RESTful Web Service using Node.js and host it in Azure WebSites. Next we will connect to and consume that service from your Tessel microcontroller.
+First you'll create a custom RESTful Web Service using Node.js and host it in Azure WebSites. Next you will connect to and consume that service from your Tessel microcontroller.
 
 Prerequisites
 -------------
@@ -15,13 +15,13 @@ In order to successfully complete this lab you need to:
 Instructions
 ------------
 
-In this lab we will use the new [Azure Portal](http://portal.azure.com) for all server side activities, including:
+In this lab you will use the new [Azure Portal](http://portal.azure.com) for all server side activities, including:
 
 * Creating an Azure WebSite
 * Writing a simple Node.js RESTful Web Service
 * Invoking and debugging your service
 
-Allthough we do this from within the Azure Portal there are plenty of other ways you can achieve the same thing, for example: create the website using Azure-CLI (Azure x-plat) or deploy custom code using Git. See the section Extra Workout
+Allthough you do this from within the Azure Portal there are plenty of other ways you can achieve the same thing, for example: create the website using Azure-CLI (Azure x-plat) or deploy custom code using Git. See the section Extra Workout
 
 ### Creating a new Azure Website
 
@@ -123,9 +123,9 @@ Summary
 -------
 You have:
 
-*Created an Azure Website
-*Created a Node.JS RESTful API service with Visual Studio Online and deployed it on Azure Websites
-*Created a program that calls this Node.JS service and makes the Tessel Microcontroller led blink
-*Deployed the program on your Tessel Microcontroller and ran it
+* Created an Azure Website
+* Created a Node.JS RESTful API service with Visual Studio Online and deployed it on Azure Websites
+* Created a program that calls this Node.JS service and makes the Tessel Microcontroller led blink
+* Deployed the program on your Tessel Microcontroller and ran it
 
 __Go ahead and play with the solution. Tweak it, extend it, use it in a bigger context. Have fun!__
