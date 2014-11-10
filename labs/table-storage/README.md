@@ -29,11 +29,11 @@ In this lab you're going to host a service on Microsoft Azure Mobile Services th
 
 ### Setting up Azure
 
-There are two components we need to setup in Azure to have everything working: storage and hosting.
+There are two components you need to setup in Azure to have everything working: storage and hosting.
 
 #### Create a storage account
 
-During this part of the lab we are going to use the Azure-CLI (Azure x-Plat Tools), even though you can easily do the same thing using the management portal if you want to.
+During this part of the lab you use the Azure-CLI (Azure x-Plat Tools), even though you can easily do the same thing using the management portal if you want to.
 
 Open a terminal/console window. Execute the following commands to get insight into what you will do next.
 
@@ -93,13 +93,13 @@ __This lab description assumes the storage account name and key are set as Envir
 
 #### Create and test table in Azure Table Storage
 
-We will pre-create the table and also introduce a small sample tool to read and write some test data from that table.
+You will pre-create the table and also introduce a small sample tool to read and write some test data from that table.
 
 Open a terminal/console window. Make sure you have downloaded/cloned/copied the contents of this lab locally on your computer and change directory to the "tool" directory.
 
 	cd tool
 
-In this directory you'll fine a Node.js app ([wt.js](tool/wt.js)). We are going to use this app, but first we need to install required Node Modules. The required Node Modules for this project are described in the [package.json](tool/package.json) file. Node.js provides an easy tool for downloading and installing those dependencies "npm". Install the required module(s) by executing the following command:
+In this directory you'll fine a Node.js app ([wt.js](tool/wt.js)). You are going to use this app, but first you need to install required Node Modules. The required Node Modules for this project are described in the [package.json](tool/package.json) file. Node.js provides an easy tool for downloading and installing those dependencies "npm". Install the required module(s) by executing the following command:
 
 	npm install
 
@@ -120,13 +120,13 @@ If everything went according to plans you should now be able to execute the comm
 	  AZURE_STORAGE_ACCOUNT    : yournamegoeshere
 	  AZURE_STORAGE_ACCESS_KEY : ZF2po8rCJk.....DATA-REMOVED-FROM-SAMPLE....4rrt5EN2lK1k2hA==
 
-We will use this tool during the rest of this lab to:
+You will use this tool during the rest of this lab to:
 
 * create table 'weatherlogs'
 * insert sample data in table 'weatherlogs'
 * read data from table 'weatherlogs'
 * clear data from table 'weatherlogs'
-* delete table 'weatherlogs' and all data within when we are done
+* delete table 'weatherlogs' and all data within when you are done
 
 If you have successfully set the Environment Variables AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY the values will be listed by the tool. If not, you can provide those parameters to this tool manually according to the shown syntax.
 
@@ -134,7 +134,7 @@ Execute the following command to create a new Azure Table in your currently refe
 
 	> node wt create
 
-Now you have an empty table created in your storage account. You can start any other program that has access to this table and start reading and writing data to it. But we add some sample data to the table for test first. Execute:
+Now you have an empty table created in your storage account. You can start any other program that has access to this table and start reading and writing data to it. But you add some sample data to the table for test first. Execute:
 
 	> node wt insert
 
@@ -185,9 +185,9 @@ _As you have seen when you inserted and read the rows from our Azure Table, all 
 * Partition and Row Key are very important for sorting and querying of data. You want to minimize the times where you create a query that involves other properties than those two, since that will involve some kind of 'scan' that will take longer.
 * You want to select a PartitionKey that is as specific as possible for your solution in order to gain scalability and speed.
 
-There are more things to know about the PartitionKey and RowKey than we can handle in this lab, but with a carefully selected algorithm for your keys, Azure Table Storage will be a fast and scalable data storage alternative._
+There are more things to know about the PartitionKey and RowKey than we can discuss in this lab, but with a carefully selected algorithm for your keys, Azure Table Storage will be a fast and scalable data storage alternative._
 
-In this sample we have created a PartitionKey that is constructed as follows:
+In this sample a PartitionKey is constructed as follows:
 
 	[TesselSerialNo] + | + [year] + [month] + [day]
 
@@ -197,13 +197,13 @@ And a RowKey that is created by calculating the number of seconds left in the da
 	secondsLeftToday = secondsPerDay - secondsSinceMidnight
 	rowKey = padLeft(secondsLeftToday, 5) // Fill out with zeros
 
-This pair of PartitionKey and RowKey will give you a table where you never will have too large partitions since every device uses a new PartitionKey for each day. Still the partitions will be large enough so we can do simple things like: collecting all data for a specific tessel, for a specific date and return all data at once.
+This pair of PartitionKey and RowKey will give you a table where you never will have too large partitions since every device uses a new PartitionKey for each day. Still the partitions will be large enough so you can do simple things like: collecting all data for a specific tessel, for a specific date and return all data at once.
 
 _There are books and tutorials about how to select good PartitionKeys and RowKeys, make sure you select them with consideration before you implement your solutions._
 
 #### Create and host the SAS Service
 
-As mentioned before, we need a controlled place where we create and hand out the SAS that will be used for direct access against Azure Table Storage, so we’ll start by creating that service.
+As mentioned before, you need a controlled place where you create and hand out the SAS that will be used for direct access against Azure Table Storage, so we’ll start by creating that service.
 
 There are several choices where you can host services in Microsoft Azure, such as:
 
@@ -216,7 +216,7 @@ There are several choices where you can host services in Microsoft Azure, such a
 * App container, such as Dockers
 * etc.
 
-In this lab we will build simple REST API with Node.js and host it in Mobile Services. We will be using the portal to setup our Mobile Service manually. There are plenty of deployment alternatives when it comes to Mobile Services, such as:
+In this lab you will build simple REST API with Node.js and host it in Mobile Services. You will be using the portal to setup our Mobile Service manually. There are plenty of deployment alternatives when it comes to Mobile Services, such as:
 
 * Manually through the [Management Portal](http://manage.windowsazure.com)
 * Through Azure-CLI (Azure x-Plat Tools) (The lab “[Creating and Calling a Custom REST API with Azure Mobile Services](../mobile-services)” uses this approach)
@@ -234,7 +234,7 @@ Step through the wizard and create your mobile service:
 
 ![Create a Mobile Service](images/create-a-mobile-service.png)
 
-* Database: Create a free database, select an existing SQL database or whatever alternative fits best for you. We will not be using the database during this lab at all.
+* Database: Create a free database, select an existing SQL database or whatever alternative fits best for you. The database is not used att all during this lab at all.
 * Region: Make sure you select the region you want to use for hosting your service.
 * Backend: Select JavaScript for this lab.
 * There is no need to configure advanced push settings
@@ -288,7 +288,7 @@ Replace [yournamegoeshere] with the name of your Mobile Service that you just ha
 
 	{"message":"Hello World!"}
 
-Now we have a RESTful API hosted in Mobile Services. Time to replace the code with custom code. In the file [weatherconfig.js](mobile-services/api/weatherconfig.js) you'll find the complete implementation of the code we want to use.
+Now you have a RESTful API hosted in Mobile Services. Time to replace the code with custom code. In the file [weatherconfig.js](mobile-services/api/weatherconfig.js) you'll find the complete implementation of the code to use.
 
 * Open [weatherconfig.js](mobile-services/api/weatherconfig.js) and copy the contents
 * Replace the sample code in your "weatherconfig" API with the provided code
@@ -322,7 +322,7 @@ You have at least two errors. Select the one on the bottom and click the "DETAIL
 	    at Object.<anonymous> (D:\home\site\wwwroot\App_Data\config\scripts\api\weatherconfig.js:1:75)
 	    [external code]
 
-This confirms, Azure Mobile Services doesn't have the module 'azure-storage' installed, we need to install it.
+This confirms, Azure Mobile Services doesn't have the module 'azure-storage' installed, you need to install it.
 
 ##### Install your custom Node.js modules in Azure Mobile Services
 
@@ -358,11 +358,11 @@ This will install the missing package and save information in the package.json f
 	    at Object.<anonymous> (D:\home\site\wwwroot\App_Data\config\scripts\api\weatherconfig.js:2:22)
 	    [external code]
 
-We don't have any errors saying we are missing a module anymore, so let's find out what this is. On row 2 in the weather API file, we are creating a TableService object that will act as a client for us to execute commands against tables.
+There are no errors anymore saying module are missing, so let's find out what this is. On row 2 in the weather API file, you are creating a TableService object that will act as a client for us to execute commands against tables.
 
 	var tableSvc = azure.createTableService();
 
-This is the line that currently fails, because we don't provide any credentials for the storage account and therefore the Azure Storage Module assumes those credentials to be in Environment Variables. Those parameters are really easy to set in the portal.
+This is the line that currently fails, because you don't provide any credentials for the storage account and therefore the Azure Storage Module assumes those credentials to be in Environment Variables. Those parameters are really easy to set in the portal.
 
 Go back one step (you know with the back button in the portal, not the browsers back button) and then go to the "CONFIGURE" section for your Mobile Service. Scroll down until you can see the section named "app settings". This is where you can create your Environment Variables, these variables are exactly the same as the once you used earlier in this lab. If you don't remember the key anymore open up your terminal/command window and execute the following Azure CLI command again, where <name> is the name of your storage account that you created before.
 
@@ -383,11 +383,11 @@ Once again browse to:
 
 	{"authorized":false,"message":"deviceId was not provided or has been refused access"}
 
-This is a custom error message and this message means that everything works just fine. In order to get a response back from the server we just need to identify ourselves by appending a deviceId at the end of the URL. Change the URL to the following:
+This is a custom error message and this message means that everything works just fine. In order to get a response back from the server just identify yourselve by appending a deviceId at the end of the URL. Change the URL to the following:
 
 	https://[yournamegoeshere].azure-mobile.net/api/weatherconfig?deviceId=123-123-123
 
-__Be aware that this is NOT a fully tested, super secure, authentication implementation. As you can see you can very easily change the deviceId to whatever you want and you'll get a result. There is information on the internet on how you should handle authentication from devices, this is not one of them, but this lab shows you how to use Azure Tables together with a service that gives out Signed Access Signatures (and other configuration) in order to avoid handing over the storage account keys.__ You've been warned before, but now we've advised you again.
+__Be aware__ that this is NOT a fully tested, super secure, authentication implementation. As you can see you can very easily change the deviceId to whatever you want and you'll get a result. There is information on the internet on how you should handle authentication from devices, this is not one of them, but this lab shows you how to use Azure Tables together with a service that gives out Signed Access Signatures (and other configuration) in order to avoid handing over the storage account keys. You've been warned before, but now we've advised you again.
 
 You won't get exactly the same result as shown here but something similar:
 
@@ -437,13 +437,13 @@ Your Tessel will now:
 2. With the provided configuration, the Tessel will now use Azure Storage and the configured table. After collecting weather logs (simulated in this lab), the Tessel directly calls Azure Table Storage and adds a row for the current measurement. This phase is signaled by the blue LED.
 3. After a delay, the Tessel will do one of two things: Collect more weather logs or ask for new configuration settings. Remember that the Signed Access Signature is valid for a longer time, so the Tessel can write several logs against Azure Tables before a new SAS is needed.
 
-Open a new terminal/console window and change directory to the [tool folder](tool). Remember the tool we used to create and insert sample data into the Azure Table we are using. Use that same tool to watch incoming logs from your Tessel by running:
+Open a new terminal/console window and change directory to the [tool folder](tool). Remember the tool used to create and insert sample data into the Azure Table. Use that same tool to watch incoming logs from your Tessel by running:
 
 	> node wt read
 
 Be aware: you have to set the Environment Variables: AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY to the name of your storage account and the access key to that storage account respectively again in a new terminal/console window
 
-Expirement the server side code as well as the Tessel code and make sure you understand the flow.
+Expirement with the server side code as well as the Tessel code and make sure you understand the flow.
 
 ### Extra Workout
 
@@ -455,9 +455,10 @@ Summary
 -------
 You have:
 
-*Created an Azure Storage Account and Table
-*Created a service, hosted on Azure Mobile Services, that provides configuration and authentication to the Tessel.
-*Create a program on your Tessel that retrieves the configuration from the service and directly connects to Azure Table Storage to write data
+* Created an Azure Storage Account and Table
+* Created a service, hosted on Azure Mobile Services, that provides configuration and authentication to the Tessel.
+* Create a program on your Tessel that retrieves the configuration from the service and directly connects to Azure Table Storage to write data
 
 By accessing Azure Tables directly we offload very much of the traffic that otherwise would have gone through your own custom API. We’ve also shown that with the correct keys, Azure Table Storage can be an optimal solution to your ever growing storage needs for structured data.
 
+__Go ahead and play around with the solution. Tweak it, extend it, use it in a bigger context. Have fun!__
