@@ -1,4 +1,4 @@
-Calling a REST API, running in a Docker container on Azure, directly from Tessel.
+Calling a REST API, running in a Docker container on Azure, directly from Tessel
 =============
 [Docker] is a tool to manage Linux containers. Containers are processes that have isolated storage, networking and compute resources. Docker is the client tool to create, extend, run and deploy containers. Containers offer a runtime for web applications, services, databases, whatever you can run on Linux (and soon also on Windows). 
 
@@ -88,7 +88,7 @@ Make sure you are logged into the Azure portal using the account that is coupled
 If the browser does not start click [this link] to download it manually.
 
 
-**Optional:** We can also use the Linux docker client VM , instead of our local machine, to manage Azure. To do so we need to copy the publish settings file we just downloaded to the Linux VM in Azure. Open a command prompt locally and run:
+**Optional (Windows OS only):** We can also use the Linux docker client VM , instead of our local machine, to manage Azure. To do so we need to copy the publish settings file we just downloaded to the Linux VM in Azure. Open a command prompt locally (Windows) and run:
  
     set PATH=c:\Program Files(x86)\PuTTY
     pscp -i [PATH TO .PPK FILE] [PATH TO PUBLISH SETTINGS FILE]  [USER NAME]@[HOST NAME].cloudapp.net:/home/[USER NAME]/ 
@@ -120,7 +120,9 @@ Copy the image name of the latest daily build, we will use this in our next comm
 
 Enter the command below to create the VM. The 'docker' option instructs Azure to prefit the VM with the Docker components and a docker daemon (background service). -e is the endpoint on port 22, -l is the location 'West Europe' or any region closeby.
 
-    azure vm docker create -e 22 -l "West Europe" [HOSTIMAGENAME] "[VMHOSTNAME]"
+    azure vm docker create -e 22 -l "West Europe" [HOST NAME]  "[IMAGE NAME]" [USER NAME] [PASSWORD]
+
+It could be that an error message is show stating the host name is already taken.
 
 After a couple of minutes, we have our host VM running, a storage account for the host VM VHD file, and the certificates for running the Daemon (background service) and have it listen to port 4243.
 
