@@ -43,10 +43,10 @@ Instructions
 * Configure the VM in the portal wizard so that it is hosted in a nearby region and has the SSH key configured we generated earlie. Create a new storage account to store the VHD files that our VM machines will be run from. Click 'create' to start provisioning the docker client VM.
 ![Portal gallery](images/VMConfig.png)
 
-* Wait a couple of minutes for the VM to be ready.
+* Wait a couple of minutes for the VM to be ready. Check the portal to note the hostname that corresponds to the VM.
 ![VM Starting](images/RunningClientVM.png)
 
-* Once the VM gets the 'Running' status use Putty to connect to the VM by selecting the private key file in the Category/Connection/SSH/Auth box and entering the host name including the '.cloudapp.net' extensions.
+* Once the VM gets the 'Running' status use Putty to connect to the VM by selecting the private key file in the Category/Connection/SSH/Auth box and entering the host name including the '.cloudapp.net' extensions. It might take a couple of minutes before the connection can be made. In case no connection can be made, double check to see if the hostname got an extension in the name like 'dockerclientvm-**f6k88f4w**' (this would be added for uniqueness in the DNS registery).
 ![VM Starting](images/Putty.png)
 
 * Connect to the Linux VM using Putty. 
