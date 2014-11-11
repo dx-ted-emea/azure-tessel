@@ -1,6 +1,7 @@
-(Name of lab)
+Send messages from Tessel to Service Bus Queue
 =============
-(Enter a short description of what the lab will go through here. Approximately 5-10 sentences.)
+Asynchronous messaging patterns are the architectural cornerstone of reliable and scalable applications. Integrating cloud resources with Service Bus messaging ensures smooth operation under heavy and variable load with the durability to survive intermittent failures.
+In this lab you will learn how to use Service Bus Queue by creating a Tessel app that put (enqueue) messages in a Queue using the REST API, later a consumer app will get (dequeue) the message from the queue using the Azure node.js SDK.
 
 Prerequisites
 -------------
