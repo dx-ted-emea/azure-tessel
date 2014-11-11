@@ -1,6 +1,6 @@
 var azure = require('azure-storage');
 
-var validCommands = ['create', 'insert', 'read', 'delete'];
+var validCommands = ['create', 'insert', 'read', 'clear', 'delete'];
 
 var command;
 
@@ -24,6 +24,7 @@ if (command && process.env.AZURE_STORAGE_ACCOUNT && process.env.AZURE_STORAGE_AC
 	if (command == 'create') createTable();
 	if (command == 'insert') insertData();
 	if (command == 'read') readData();
+	if (command == 'clear') deleteData();
 	if (command == 'delete') deleteTable();
 }
 else {
@@ -38,10 +39,10 @@ else {
 	}
 
 	console.log();
-	console.log('Table Storage Tool, TST');
+	console.log('Weather Tool, WT');
 	console.log('  for lab: UPLOADING STRUCTURED DATA TO AZURE TABLE STORAGE');
 	console.log();
-	console.log('usage: node tst <create | insert | read | delete> [azureStorageAccount] [azureStorageAccessKey]')
+	console.log('usage: node tst <create | insert | read | clear | delete> [azureStorageAccount] [azureStorageAccessKey]')
 	console.log();
 	console.log('Azure storage access need to be provided as parameters or through the following environment');
 	console.log('variables. Look-up how you set Environment Variables for your operating system or pass in');
@@ -89,25 +90,19 @@ function insertData() {
 	console.log();
 
 	var tableService = azure.createTableService();
+
+	var deviceId = 'TM-00-04-f000da30-0061473d-36582586';
+
 	var entGen = azure.TableUtilities.entityGenerator;
 
-	var tesselSerialNo = "123-4567-890";
+	var date = new Date();
 
-	var now = new Date();
-
-	var year = now.getUTCFullYear();
-	var month = now.getUTCMonth() + 1;
-	var day = now.getUTCDate();
-	var hours = now.getUTCHours();
-	var minutes = now.getUTCMinutes();
-	var seconds = now.getUTCSeconds();
-
-	var partitionKey = tesselSerialNo + '|' + year + '-' + addZero(month) + '-' + addZero(day);
-	var rowKey = addZero(hours) + ':' + addZero(minutes) + ':' + addZero(seconds);
+	var partitionKey = getPartitionKey(deviceId, date);
+	var rowKey = getRowKey(date);
 
 	// Generate random sample values for temperature and humidity
-	var temperature = Math.floor((Math.random() * 100) - 50);
-	var humidity = Math.floor((Math.random() * 100) + 1);
+	var temperature = getTemperature();
+	var humidity = getHumidity();
 
 	console.log('PartitionKey      : ', partitionKey);
 	console.log('RowKey            : ', rowKey);
@@ -141,11 +136,11 @@ function insertData() {
 
 function readData() {
 	console.log();
-	console.log('Reading data from table');
+	console.log('Reading top 50 rows from table');
 	console.log();
 
 	var tableService = azure.createTableService();
-	var query = new azure.TableQuery().top(10);
+	var query = new azure.TableQuery().top(50);
 
 	// console.log(tableService.queryEntities.toString());
 	tableService.queryEntities('weatherlogs', query, null, function(error, result, response) {
@@ -166,12 +161,48 @@ function readData() {
 		} else {
 	  	// An error occured
 
-	  	console.log("Unable to read data");
+	  	console.log('Unable to read data');
 	  	console.log(error);
 
 	  }
 
 	  console.log();
+	});
+}
+
+function deleteData() {
+	// TODO - Replace current implementation with more efficient batch delete API call
+	
+	var entGen = azure.TableUtilities.entityGenerator;
+	var tableService = azure.createTableService();
+
+	var query = new azure.TableQuery().top(1);
+
+	tableService.queryEntities('weatherlogs', query, null, function (error, result, response) {
+		if (!error) {
+			if (result.entries.length > 0) {
+				var weatherLog = {
+					PartitionKey: entGen.String(result.entries[0].PartitionKey._),
+					RowKey: entGen.String(result.entries[0].RowKey._)
+				};
+
+				tableService.deleteEntity('weatherlogs', weatherLog, function (err, resp) {
+					if (!err) {
+						process.stdout.write('.'); // show progress
+						setImmediate(deleteData);
+					} else {
+						console.log('Unable to delete row');
+						console.log(error);
+					}
+
+				});
+			} else {
+				console.log('\n\nTable is empty!');
+			}
+		} else {
+			console.log('Unable to delete rows');
+			console.log(error);
+		}
 	});
 }
 
@@ -205,4 +236,53 @@ function addZero(i) {
         i = "0" + i;
     }
     return i;
+}
+
+
+
+function getPartitionKey(deviceId, date) {
+	// Generate a partition key that gives each device a
+	// unique partition for each (month and) day
+
+	var partitionKey =
+			deviceId + '|' +
+			date.getFullYear() +
+			padLeft(date.getMonth() + 1, 2) +
+			padLeft(date.getDate(), 2);
+
+	return partitionKey;
+}
+
+function getRowKey(date) {
+	// Generate a row key that sort the rows descending by
+	// calculating number of seconds left on current day
+
+	var secondsSinceMidnight = 
+		date.getHours() * 3600 +
+		date.getMinutes() * 60 +
+		date.getSeconds();
+
+	var secondsPerDay = 24*60*60; // 24h x 60 min x 60 sec = 86400
+	var secondsLeftToday = secondsPerDay - secondsSinceMidnight;
+	var rowKey = padLeft(secondsLeftToday, 5);
+
+	return rowKey;
+}
+
+function getTemperature() {
+	// Fake implementation. Just returns a random number
+	var temperature = Math.floor((Math.random() * 100) - 50);
+
+	return temperature;
+}
+
+function getHumidity() {
+	// Fake implementation. Just returns a random number
+	var humidity = Math.floor((Math.random() * 100) + 1);
+
+	return humidity;
+}
+
+function padLeft(i, n, str){
+    return Array(n - String(i).length + 1).join(str||'0') + i;
 }

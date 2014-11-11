@@ -8,17 +8,17 @@ exports.get = function(request, response) {
                 
     // Set default configuration values
 
-    var configRefreshPeriod = 300; // seconds
-    var sasExpiryPeriod = 500; // seconds
-    var measurementPeriod = 15; // seconds
-    var uploadPeriod = 60; // seconds
+    var configRefreshAfter = 3; // Do X number of measurements then renew config
+    var delayBetweenMeasurements = 10000; // Delay measurements by X ms
+    var azureStorageAccount = 'not-set'; // Storage Account Name, should be overridden below by environment variable
+    var tableName = 'weatherlogs'; // Table to write logs to
     
     // Override default values if other values have been set using the management portal
 
-    if (process.env.CONFIG_REFRESH_PERIOD) { configRefreshPeriod = process.env.CONFIG_REFRESH_PERIOD; }
-    if (process.env.SAS_EXPIRY_PERIOD) { sasExpiryPeriod = process.env.SAS_EXPIRY_PERIOD; }
-    if (process.env.MEASUREMENT_PERIOD) { measurementPeriod = process.env.MEASUREMENT_PERIOD; }
-    if (process.env.UPLOAD_PERIOD) { uploadPeriod = process.env.UPLOAD_PERIOD; }
+    if (process.env.CONFIG_REFRESH_AFTER) { configRefreshAfter = process.env.CONFIG_REFRESH_AFTER; }
+    if (process.env.DELAY_BETWEEN_MEASUREMENTS) { delayBetweenMeasurements = process.env.DELAY_BETWEEN_MEASUREMENTS; }
+    if (process.env.AZURE_STORAGE_ACCOUNT) { azureStorageAccount = process.env.AZURE_STORAGE_ACCOUNT; }
+    if (process.env.TABLE_NAME) { tableName = process.env.TABLE_NAME; }
     
     var deviceId = request.query.deviceId;
     
@@ -29,16 +29,19 @@ exports.get = function(request, response) {
     
         var now = new Date();
         var sasExpiryDate = new Date(now);
-        sasExpiryDate.setSeconds(now.getSeconds() + sasExpiryPeriod);
+        sasExpiryDate.setMinutes(now.getMinutes() + 30);
     
+        // Expirey date sets to now + 30 minutes. New configuration need to be read before that.
+        console.info('Expiry Date set to:', sasExpiryDate);
+        
         var sharedAccessPolicy = {
             AccessPolicy: {
-                Permissions: azure.BlobUtilities.SharedAccessPermissions.WRITE,
+                Permissions: 'a', // a = add rows
                 Expiry: sasExpiryDate
             },
         };
         
-        var sas = tableSvc.generateSharedAccessSignature('mytable', sharedAccessPolicy);
+        var sas = tableSvc.generateSharedAccessSignature(tableName, sharedAccessPolicy);
         
         // Register the address of the Storage Account
     
@@ -48,10 +51,10 @@ exports.get = function(request, response) {
     
         var config = {
             authorized: true,
-            configRefreshPeriod: configRefreshPeriod,
-            measurementPeriod: measurementPeriod,
-            uploadPeriod: uploadPeriod,
-            host: host,
+            refreshConfigAfterNo: configRefreshAfter,
+            delayBetweenMeasurements: delayBetweenMeasurements,
+            azureStorageAccount: azureStorageAccount,
+            tableName: tableName,
             sas: sas,
         };
         
