@@ -1,4 +1,4 @@
-Send Push Notification to Mobile with Notification Hubs
+Send Push Notifications to Mobile devices with Notification Hubs
 =============
 In this lab you will learn how to send push notification to a mobile device (Windows Phone or Android) directly from your Tessel. It demonstrates how to use Azure Notification Hub with the Notification Hubs REST API.
 
@@ -26,10 +26,7 @@ In this lab you will:
 * Create a mobile App to receive notifications
 * Send notifications from your Tessel
 
-In part 2 of this lab 
-In part 3 you will create the node.js code that will run on the Tessel device to send push notifications. In part 4 of this lab you will run the code and recive the notifications on your mobile phone.
-
-Please note in some cases reciving push notification is not avilable with running emulators and you will need to run your mobile app on a real mobile device.
+_Please note in some cases receiving push notification is not possible with running emulators so you will need to run your mobile app on a real mobile device._
 
 The source code for this lab contains two folders:
 * Tessel - the node.js code to run on the Tessel device.
