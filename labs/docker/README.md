@@ -110,6 +110,12 @@ Run the statement below to get access to your Azure subscription using the path 
 
     azure account import [path to .publishsettings file]
     
+Check and set the Azure account you want to use:
+
+    azure account list
+    azure account set '[SUBSCRIPTION NAME]'
+
+    
 List available Ubuntu images by running:
 
     azure vm image list | grep 14_04
@@ -133,9 +139,9 @@ To make our container available outside of the host we need to add another endpo
 
 	azure vm endpoint create -n "HTTP" "[vmhostname]" 80 80 
 
-This adds the endpoint for HTTP traffic through TCP port 80. You can check the portal website to confirm the creating of the endpoint. the -n is just an endpoint name. The options '80 80' refer to the mapping of an internal port (the one openen in the host VM) and external port (the one we can talk to from our Tessel client). The hostname is the DNS name without the '.cloudapp.net' extensions.
+This adds the endpoint for HTTP traffic through TCP port 80. You can check the portal website to confirm the creating of the endpoint. the -n is just an endpoint name. The options '80 80' refer to the mapping of an internal port (the one opened in the host VM) and external port (the one we can talk to from our Tessel client). The hostname is the DNS name without the '.cloudapp.net' extensions.
 
-* Check whether our Docker host is running by running:
+* Check whether our Docker host is running by entering:
 
 	sudo docker --tls -H tcp://[VMHOSTNAME].cloudapp.net:4243 info 
 
@@ -160,7 +166,7 @@ We can check all containers on the host using:
 	
 We could also use the tls command to setup an image for our container manually but a better, more reusablem, approach would be to define a so called Dockerfile and let Docker manage the creation of the image. The Dockerfile instructs Docker what base image should be used and what command it must execute on top of the base image to create additional layers that ultimately make up the image that has all the parts our app needs to run. In our case this will be Node.js, NPM (the Node.js package manager) and our application script files.
 
-Create a file named 'Dockerfile' (we use PICO as our texteditor):
+Create a folder named 'tesselapi' and in it a file named 'Dockerfile' on the local machine or the Linux docker client VM (we use PICO as our texteditor):
 
 	cat > Dockerfile
 	pico Dockerfile
@@ -185,7 +191,7 @@ Paste the following script in the Dockerfile:
 	
 Save the content of the file by pressing CTRL-O and exit pressing CTRL-X
 
-Add another file called start.sh. The commands in this script file are not cached by Docker (due to the CMD line in the Dockerfile) so we can update these steps faster since they will be executed  everytime we 'run' command as we'il see later on.
+Add another file called start.sh. The commands in this script file are not cached by Docker (due to the CMD line in the Dockerfile) so we can update these steps faster since they will be executed everytime we 'run' command as we'il see later on.
 
 	cat > start.sh
 	pico start.sh
