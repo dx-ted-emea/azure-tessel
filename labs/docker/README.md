@@ -136,7 +136,7 @@ This image name will do the trick:
 
     b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-trusty-14_04_1-LTS-amd64-server-20141110-en-us-30GB
 
-It could be that an error message is shown stating that the host name is already taken, a bit of creativity in naming fixes that.
+It could be that an error message is shown stating that the host name is already taken, a bit of creativity in naming fixes that. Use the 'azure vm list' command to check the VM status.
 
 After a couple of minutes, we have our host VM running, a storage account for the host VM VHD file, and the certificates for running the Daemon (background service) and have it listen to port 4243.
 
