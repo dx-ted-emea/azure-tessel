@@ -115,7 +115,7 @@ Check and set the Azure subscription you want to use:
     azure account list
     azure account set '[SUBSCRIPTION NAME]'
 
-! For reasons unknown to the writer the CLI calls subscriptions 'accounts' but the term account in Azure refers to the Microsoft user account, or organisational Active Directory user, that holds one or more subscriptions:
+! For reasons unknown to the writer the CLI calls subscriptions 'accounts' but the term account in Azure refers to the Microsoft user account, or organisational Active Directory user, that holds one or more subscriptions.
 
     
 List available Ubuntu images by running:
@@ -125,6 +125,8 @@ List available Ubuntu images by running:
 We filter the list so we only see the latest 14.04 versions of the Ubuntu LTS release that are available in Azure.
 
 Copy the image name of the latest daily build, we will use this in our next command to base the container host VM on.
+
+!TIP: For long commands use you favorite text editor to replace the parameters and then paste that into the terminal. Makes life much easier.
 
 Enter the command below to create the VM. The 'docker' option instructs Azure to prefit the VM with the Docker components and a docker daemon (background service). -e is the endpoint on port 22, -l is the location 'West Europe' or any region closeby. The password needs to be 8 characters long and contain on of these special characters: '!@#$%^&+='. The -z option sets the VM size and the options currently are: extrasmall, small, medium, large, extralarge, a5, a6, a7, a8. Look at the [Azure website] to check the specifications of these machines.
 
