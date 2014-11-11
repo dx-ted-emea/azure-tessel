@@ -8,9 +8,8 @@ Prerequisites
 In order to successfully complete this lab you need to:
 
 * Have successfully setup your Azure Subscription, your development environment and your Tessel according to instructions outlined in the [Setup Lab](../_setup).
-* (Add other prerequisites here)
-* (If the lab uses features, tools or languages that are only available on certain operating systems make sure you specify them here, i.e. PowerShell, Visual Studio, C#, etc.)
-* (...)
+* You have a tessel ambient module and its configured acording to: <a href="http://start.tessel.io/modules/ambient">Tessel ambient module</a> 
+
 
 Instructions
 ------------
