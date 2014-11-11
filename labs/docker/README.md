@@ -110,10 +110,12 @@ Run the statement below to get access to your Azure subscription using the path 
 
     azure account import [path to .publishsettings file]
     
-Check and set the Azure account you want to use:
+Check and set the Azure subscription you want to use:
 
     azure account list
     azure account set '[SUBSCRIPTION NAME]'
+
+! For reasons unknown to the writer the CLI calls subscriptions 'accounts' but the term account in Azure refers to the Microsoft user account, or organisational Active Directory user, that holds one or more subscriptions:
 
     
 List available Ubuntu images by running:
