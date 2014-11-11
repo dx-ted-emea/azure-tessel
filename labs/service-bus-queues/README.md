@@ -15,8 +15,12 @@ Instructions
 ------------
 (Describe the lab here. Divide the lab into logical parts in order for the participant to easily follow along. If possible, describe the steps in the lab using steps that are platform agnostic, i.e. it should work using whatever operating system you want. If possible use Azure-CLI to manage Windows Azure, but also explain how to use the portal if you feel it adds extra value or visibility. Remember that the portal(s) are changing faster than Azure-CLI, so the labs will be easier to maintain if we use Azure-CLI and since the Tessel's programming tools are used from the console, we might as well stick with it as much as possible. The preferred programming language on the server and client side should be JavaScript if possible in order to keep complexity of setup to a minimum.)
 
-### Part 1
-(Text in part one goes here)
+### Part 1 - Create Service Bus Namespace, Create Queue and get the authentication credentials
+The very first thing you will have to do when working with Service Bus is to create a namespace.
+The following article explains what is Service Bus Queue and how to create a Namespace [ How to Use Service Bus Queues ](http://azure.microsoft.com/en-us/documentation/articles/service-bus-nodejs-how-to-use-queues/)
+
+
+
 
 ### Part 2
 (Text in part two goes here)
