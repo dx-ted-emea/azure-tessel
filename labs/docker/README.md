@@ -126,11 +126,15 @@ We filter the list so we only see the latest 14.04 versions of the Ubuntu LTS re
 
 Copy the image name of the latest daily build, we will use this in our next command to base the container host VM on.
 
-Enter the command below to create the VM. The 'docker' option instructs Azure to prefit the VM with the Docker components and a docker daemon (background service). -e is the endpoint on port 22, -l is the location 'West Europe' or any region closeby.
+Enter the command below to create the VM. The 'docker' option instructs Azure to prefit the VM with the Docker components and a docker daemon (background service). -e is the endpoint on port 22, -l is the location 'West Europe' or any region closeby. The password needs to be 8 characters long and contain on of these special characters: '!@#$%^&+='. The -z option sets the VM size and the options currently are: extrasmall, small, medium, large, extralarge, a5, a6, a7, a8. Look at the [Azure website] to check the specifications of these machines.
 
-    azure vm docker create -e 22 -l "West Europe" [HOST NAME]  "[IMAGE NAME]" [USER NAME] [PASSWORD]
+    azure vm docker create -z Medium -e 22 -l "West Europe" [HOST NAME]  "[IMAGE NAME]" [USER NAME] [PASSWORD]
 
-It could be that an error message is show stating the host name is already taken.
+This image name will do the trick:
+
+    b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-trusty-14_04_1-LTS-amd64-server-20141110-en-us-30GB
+
+It could be that an error message is shown stating that the host name is already taken, a bit of creativity in naming fixes that.
 
 After a couple of minutes, we have our host VM running, a storage account for the host VM VHD file, and the certificates for running the Daemon (background service) and have it listen to port 4243.
 
@@ -238,3 +242,4 @@ During this lab we have seen that with Docker we can containerize our deployment
 [Putty]: http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.63-installer.exe
 [PuttyGen]: http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe
 [this link]: http://go.microsoft.com/fwlink/?LinkId=254432
+[Azure website]: http://msdn.microsoft.com/en-us/library/azure/dn197896.aspx
