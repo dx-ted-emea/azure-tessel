@@ -40,7 +40,7 @@ Instructions
 * In the list select 'Everything' so we can use the search feature to look for 'Ubuntu'. This will display all Ubuntu VM images available. Select the one with '14.04 LTS' in its name and press the Create button ast the bottom.
 ![Portal gallery](images/UbuntuFound.png)
 
-* Configure the VM in the portal wizard so that it is hosted in a nearby region and has the SSH key configured we generated earlie. Create a new storage account to store the VHD files that our VM machines will be run from. Click 'create' to start provisioning the docker client VM.
+* Configure the VM in the portal wizard so that it is hosted in a nearby region and has the SSH key configured that we generated earlier. Create a new storage account to store the VHD files that our VM machines will be run from. Click 'create' to start provisioning the docker client VM.
 ![Portal gallery](images/VMConfig.png)
 
 * Wait a couple of minutes for the VM to be ready. Check the portal to note the hostname that corresponds to the VM.
