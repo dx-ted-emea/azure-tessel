@@ -24,7 +24,7 @@ In this lab you'll create a custom RESTful Web Service using Node.js and host it
 
 #### [Lab 4 - Service Bus Queues](labs/service-bus-queues) ####
 ##### Sending telemetry to Azure using Service Bus Queues #####
-Text: To be provided
+Asynchronous messaging patterns are the architectural cornerstone of reliable and scalable applications. Integrating cloud resources with Service Bus messaging ensures smooth operation under heavy and variable load with the durability to survive intermittent failures. In this lab you will learn how to use Service Bus Queue by creating a Tessel app that put (enqueue) messages in a Queue using the REST API, later a consumer app will get (dequeue) the message from the queue using the Azure node.js SDK.
 
 #### [Lab 5 - Azure EventHub](labs/event-hub) ####
 ##### Using EventHubs for sending telemetry at high scale #####
@@ -40,10 +40,10 @@ In this lab you'll first create an Azure Storage Account with a table. Next you 
 
 #### [Lab 8 - Push Notifications](labs/notification-hub) ####
 ##### Send Push Notifications to Mobile devices with Notification Hubs #####
-In this lab you create a Notification Hub in Azure Service bus and a mobile App that registers for notifications. Next you build a program that uses the Tessel __Ambient module__ to trigger sending notifications to Notification Hub
+In this lab you will learn how to send push notification to a mobile device (Windows Phone or Android) directly from your Tessel. It demonstrates how to use Azure Notification Hub with the Notification Hubs REST API.
 
-#### [Lab 9 - Dockers](labs/dockers) ####
-##### Running the REST API created in the [Azure Websites](labs/websites) lab in a Docker container hosted on an Azure Linux VM#####
+#### [Lab 9 - Docker](labs/docker) ####
+##### Running the REST API created in the [Azure Websites](labs/websites) lab in a Docker container hosted on an Azure Linux VM #####
 Microsoft Azure provides an awesome place for you to host many kinds of operating systems and solution. During this lab we will take an existing Node.js RESTful Web Service and host it in a Docker container running on Linux in Microsoft Azure. When everything is up and running we will connect to and consume that service from your Tessel microcontroller.
 
 ---
