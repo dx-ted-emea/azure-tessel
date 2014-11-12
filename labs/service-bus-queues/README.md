@@ -73,12 +73,9 @@ Since this app is running on a desktop we will use the [Azure Node.js SDK](http:
 * The source code for this lab includes a file named readSBQueue_setconnection.js. Open this file in a text editor.
 * Look for the following lines
 
+	//var sbConnection = '<your-servicebus-connection-string>';
+	//var queue = '<your-queue-name>';
 
-(Text in part three goes here)
-
-	
-	var sbConnection = '<your-servicebus-connection-string>';
-	var queue = '<your-queue-name>';
 
 
 #### Part 2.1
