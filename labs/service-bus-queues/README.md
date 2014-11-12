@@ -31,8 +31,9 @@ The code for this lab includes the following files:
 
 ### Part 2 - Create Service Bus Namespace and Queue, get the authentication credentials
 #### Part 2.1 - Create Service Bus Namespace and Queue
-The very first thing you will have to do when working with Service Bus is to create a namespace.
+* The very first thing you will have to do when working with Service Bus is to create a namespace.
 Go to the [Azure Managment Portal](https://manage.windowsazure.com/@gwraoa.onmicrosoft.com), in the bottom left corner click the "+NEW" button. Select "APP SERVICES" -> "SERVICE BUS" -> "QUEUE" -> "CUSTOME CREATE".
+![Create ServiceBus Queue](images/newsb.PNG)
 
 
 
