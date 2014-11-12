@@ -44,10 +44,13 @@ Applications can authenticate to Microsoft Azure Service Bus using either Shared
 
 
 * To create the SAS key go to [Azure Managment Portal](https://manage.windowsazure.com), in the menu on the left scroll down and select "SERVICE BUS".
+* Select and press the Namespace you created in part 2.1.
 
 ![ServiceBus](images/menusb.PNG)
 
+* On the top of the page in the upper menue, select and go to QUEUE.
 
+![ServiceBus](images/yourqueue.PNG)
 
 ### Part 2
 (Text in part two goes here)
