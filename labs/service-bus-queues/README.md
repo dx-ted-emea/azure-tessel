@@ -14,6 +14,12 @@ In order to successfully complete this lab you need to:
 Instructions
 ------------
 In this lab you will create a tessel app using the config button on the tessel device. Whenever the button will be pressed a message will be put in ServiceBus queue. Later you will create a node.js app using the Azure node.js SDK to consume the messages from the queue and display the raw message.
+The code for this lab includes the following files:
+* CreateSASToken.js - The code for getting the authentication credentials from ServiceBus
+* button_sbqueue_sas.js - The tessel app, whenever the Config button is being pushed a message is sent to the ServiceBus Queue.
+* readSBQueue_setconnection.js - Check if there are any message in the ServiceBus Queue and dispaly its raw data.
+* ambient_sbqueue_sas.js - This is another example for putting a message in ServiceBus Queue, you can use it if you own the [Tessel Ambient Modole](https://tessel.io/modules#module-ambient), but this is not reqiered in order to complete this lab.
+
 
 ### Part 1 - Find the Config button
 * Before start codeing lets make sure you know which button to press. Take a look at your tessel device and look for the Config button. In the picture below the Config button is marked in a blue.
