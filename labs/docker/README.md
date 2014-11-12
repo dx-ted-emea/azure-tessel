@@ -223,9 +223,15 @@ Insert the following snippet in the start.sh file. In this script we will downlo
 
 Save the content of the file by pressing CTRL-O and exit pressing CTRL-X.
 
-Run the build process by initiating the Docker 'build' command. Mark the . at the end stating the current directory contains the Dockerfile:
+Run the build process by initiating the Docker 'build' command. Mark the . at the end stating the current directory contains the Dockerfile. The -t option tags the image with a name in which we optionally can include a username for housekeeping and publication to the public image repository called Docker Hub:
 
 	docker build -t myname/my-nodejs-webserver .
+
+Now for 'Le moment suprême' we run the image so we get a container out of it:
+	
+	docker run -p 8080:8080 <username>/my-nodejs-webserver
+
+With this last command we provided the ports to be opened. First port is the host port, meaning the port that the host would need use to get to the container, and the second is the container port which the container internally expects to be getting input from.
 
 You will see in the terminal that the script is being executed. The script does the following:
 * Grab and build on top of the standard Ubuntu image
