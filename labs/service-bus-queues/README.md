@@ -38,9 +38,10 @@ Go to the [Azure Managment Portal](https://manage.windowsazure.com), in the bott
   * NAMESPACE - select Create a new namespace
   * NAMESPACE NAME - give your namespace a name
 ![Create ServiceBus Queue](images/addqueue.PNG)
+
 #### Part 2.2 - Create the authentication credentials
 Applications can authenticate to Microsoft Azure Service Bus using either Shared Access Signature (SAS) authentication, or by authenticating through Microsoft Azure Active Directory Access Control (also known as Access Control Service or ACS). In this lab we use SAS authentication. You will create a SAS Token that you will use later to authenticate from the Tessel device to ServiceBus.
-* To create the SAS key go to [Azure Managment Portal](https://manage.windowsazure.com), in the menue on the left scroll down and select "SERVICE BUS"
+* To create the SAS key go to [Azure Managment Portal](https://manage.windowsazure.com), in the menu on the left scroll down and select "SERVICE BUS"
 ![Create ServiceBus Queue](images/newsb.PNG)
 
 
