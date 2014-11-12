@@ -1,7 +1,9 @@
 ﻿Azure - Tessel Hands on Labs
 ======================================
 
-A set of hands on labs that will help you get up to speed with using Microsoft Azure together with your Tessel micro controller. These labs build upon the information you’ll find on the official sites for:
+There is a lot of buzz around Internet of Things, IoT, nowadays. But what is it? A quick search on Internet will introduce as many questions as you will find answers. So let’s leave the definition to someone else and just get hands-on with IoT by connecting some microcontrollers to communicate with each other and the cloud. How do we do that and what kind of challenges might we encounter? One thing is certain, you’ll need a microcontroller but we might not know how many of them we’re going to deploy eventually. Hundreds, thousands or perhaps millions of devices? We certainly would need a scalable backend to handle that unpredictable load in order to keep up with the demand of backend resources.
+
+Microsoft Azure is a scalable cloud platform for you to build such a solutions on and Tessel is a competent microcontroller that could be used to implement the devices you want to deploy. Here you’ll find a set of hands on labs that will help you get up to speed with using Microsoft Azure together with the Tessel micro controller. These labs build upon the information you’ll find on the official sites for:
 
 * [Microsoft Azure](http://azure.com) and
 * [Tessel](https://tessel.io)
@@ -18,11 +20,11 @@ In this lab you'll create a custom RESTful Node.js Mobile Service in Azure using
 
 #### [Lab 3 - Azure Websites](labs/websites) ####
 ##### Creating and Calling a Custom REST API with Azure WebSites #####
-In this lab you'll create a custom RESTful Web Service using Node.js and host it in Azure WebSites. Afterwards you will connect to and consume that service from your Tessel microcontroller, resulting in your controller blinking the leds a random number of times.
+In this lab you'll create a custom RESTful Web Service using Node.js and host it in Azure Web Sites. Afterwards you will connect to and consume that service from your Tessel microcontroller, resulting in your controller blinking the leds a random number of times.
 
 #### [Lab 4 - Service Bus Queues](labs/service-bus-queues) ####
-##### Sending telemetry to Azure using Service Bus Queues #####
-Text: To be provided
+##### Send messages from Tessel to Service Bus Queue #####
+Asynchronous messaging patterns are the architectural cornerstone of reliable and scalable applications. Integrating cloud resources with Service Bus messaging ensures smooth operation under heavy and variable load with the durability to survive intermittent failures. In this lab you will learn how to use Service Bus Queue by creating a Tessel app that put (enqueue) messages in a Queue using the REST API, later a consumer app will get (dequeue) the message from the queue using the Azure node.js SDK.
 
 #### [Lab 5 - Azure EventHub](labs/event-hub) ####
 ##### Using EventHubs for sending telemetry at high scale #####
@@ -38,11 +40,11 @@ In this lab you'll first create an Azure Storage Account with a table. Next you 
 
 #### [Lab 8 - Push Notifications](labs/notification-hub) ####
 ##### Send Push Notifications to Mobile devices with Notification Hubs #####
-In this lab you create a Notification Hub in Azure Service bus and a mobile App that registers for notifications. Next you build a program that uses the Tessel __Ambient module__ to trigger sending notifications to Notification Hub
+In this lab you will learn how to send push notification to a mobile device (Windows Phone or Android) directly from your Tessel. It demonstrates how to use Azure Notification Hub with the Notification Hubs REST API.
 
-#### [Lab 9 - Dockers](labs/dockers) ####
-##### Creating and Calling a Custom REST API hosted on an Azure VM running Dockers #####
-Microsoft Azure provides an awesome place for you to host many kinds of operating systems and solution. During this lab we will take a custom build Node.js REST Ful Web Service and host it in Docker container running on Linux in Microsoft Azure. When everything is up and running we will connect to and consume that service from your Tessel microcontroller.
+#### [Lab 9 - Docker](labs/docker) ####
+##### Running the REST API created in the [Azure Websites](labs/websites) lab in a Docker container hosted on an Azure Linux VM #####
+Microsoft Azure provides an awesome place for you to host many kinds of operating systems and solution. During this lab we will take an existing Node.js RESTful Web Service and host it in a Docker container running on Linux in Microsoft Azure. When everything is up and running we will connect to and consume that service from your Tessel microcontroller.
 
 ---
-_The code provided in these hands on labs should only be seen as samples, they have not gone through the rigorous testing needed for production usage. **Code is provided as is and without any warranties.** You are free to use it and please help fix any bugs you find._
+_The code provided in these hands on labs should only be seen as samples, they have not gone through the rigorous testing needed for production usage. This set of labs are released under "the MIT License (MIT)" and fhe full license can be found [here](LICENSE)_

@@ -9,6 +9,7 @@ Prerequisites
 In order to successfully complete this lab you need to:
 
 * Have successfully setup your Azure Subscription, your development environment and your Tessel according to instructions outlined in the [Setup Lab](../_setup).
+* You have installed the [Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/)
 
 
 Instructions
@@ -31,7 +32,7 @@ The code for this lab includes the following files:
 #### Part 2.1 - Create Service Bus Namespace and Queue
 * The very first thing you will have to do when working with Service Bus is to create a namespace.
 Go to the [Azure Managment Portal](https://manage.windowsazure.com), in the bottom left corner click the "+NEW" button. Select "APP SERVICES" -> "SERVICE BUS" -> "QUEUE" -> "CUSTOME CREATE".
-![Create ServiceBus Queue](images/newsb.PNG)
+![Create ServiceBus NS](images/newsb.PNG)
 * In the "Add a new queue" dialog box, insert the following details:
   * QUEUE NAME - give a name to your queue
   * REGION - select the nearest region to your location
@@ -41,20 +42,41 @@ Go to the [Azure Managment Portal](https://manage.windowsazure.com), in the bott
 
 #### Part 2.2 - Create the authentication credentials
 Applications can authenticate to Microsoft Azure Service Bus using either Shared Access Signature (SAS) authentication, or by authenticating through Microsoft Azure Active Directory Access Control (also known as Access Control Service or ACS). In this lab we use SAS authentication. You will create a SAS Token that you will use later to authenticate from the Tessel device to ServiceBus.
-* To create the SAS key go to [Azure Managment Portal](https://manage.windowsazure.com), in the menu on the left scroll down and select "SERVICE BUS"
-![Create ServiceBus Queue](images/newsb.PNG)
+
+
+* To create the SAS key go to [Azure Managment Portal](https://manage.windowsazure.com), in the menu on the left scroll down and select "SERVICE BUS".
+* Select and press the Namespace you created in part 2.1.
+
+![ServiceBus](images/menusb.PNG)
+
+* On the top of the page in the upper menue, select and go to QUEUE.
+
+![ServiceBus](images/yourqueue.PNG)
+
+* Go to the CONFIGURE tab and scroll down to "Shared access policies" 
+* Create a new policy by giving it a name and select "manage"
+* Save it by presseing the SAVE button at the bottom of the page
+
+![ServiceBus](images/createtoken.PNG)
+
+* scroll down to "Shared access key generator" 
+* Press the image to copy the key near the PRIMARY KEY, this action will copy the key to your clip board
+* Save this key, you will use it later in this lab
+
+![ServiceBus](images/getsas.PNG)
 
 
 
+### Part 3 - Create the Node.js app to read messages from ServiceBus QUEUE
+In this part you will create the consumer app, that read message from the queue and dispaly the message raw data.
+Since this app is running on a desktop we will use the [Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/).
+* The source code for this lab includes a file named readSBQueue_setconnection.js. Open this file in a text editor.
+* Edit the details for the ServiceBus connection string and the Queue name in the code.
+Look for the following lines
 
+	//var sbConnection = '<your-servicebus-connection-string>';
+	//var queue = '<your-queue-name>';
 
-### Part 2
-(Text in part two goes here)
-
-* (Bullet one)
-* (Bullet two)
-  * (Bullet two point one)
-  * (Bullet two point two)
 
 #### Part 2.1
 (Text in part two point one goes here)
@@ -69,6 +91,8 @@ Applications can authenticate to Microsoft Azure Service Bus using either Shared
 	// We want the code to be as good and clean written that it
 	// is self-explanatory and doesn't need comments. Still don't
 	// be afraid to use comments if needed.
+	//var sbConnection = '<your-servicebus-connection-string>';
+	//var queue = '<your-queue-name>';
 
 	code.indent(tab); // Indent code with 4 spaces (or tab) to have it appear as code
 
