@@ -138,10 +138,10 @@ This image name will do the trick:
 
 It could be that an error message is shown stating that the host name is already taken, a bit of creativity in naming fixes that. Use the 'azure vm list' command to check the VM status.
 
-After a couple of minutes, we have our host VM running, a storage account for the host VM VHD file, and the certificates for running the Daemon (background service) and have it listen to port 4243.
+After a couple of minutes, we have our container host VM running, a storage account for the host VM VHD file, and the certificates for running the Daemon (background service) and have it listen to port 4243.
 
 #### Building & running a container image 
-* Make sure the host VM is available by visiting the [Azure portal] and click the browse button to go to the list of running VM. Select the VM with the hostname we used in the 'azure vm docker create' command. Also note both endpoints created from the command and the CLI tools and the Docker extension.
+* Make sure the host VM is available by visiting the [Azure portal] and click the browse button to go to the list of running VM. Select the VM with the hostname we used in the 'azure vm docker create' command. Also note both endpoints created from the command and the CLI tools and the Docker extension. As you can see there are a lot of monitoring and configuration options in the Azure portal. Practically all the feature in the portal are also accessible from code, script and command line tools.
 
 To make our container available outside of the host we need to add another endpoint for HTTP traffic. Enter: 
 
@@ -163,7 +163,7 @@ And check if the following return the same result as before:
 
 	docker --tls info
 
-* Let's run a simple container (derived from an ultra-lightweight image called Busybox) in our new dedicated container host to check if it is setup correctly:
+Let's run a simple container (derived from an ultra-lightweight image called Busybox) in our new dedicated container host to check if it is setup correctly:
 
 	docker --tls run busybox echo hello world
 	
