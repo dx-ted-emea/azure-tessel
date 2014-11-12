@@ -23,7 +23,7 @@ In this lab you'll create a custom RESTful Node.js Mobile Service in Azure using
 In this lab you'll create a custom RESTful Web Service using Node.js and host it in Azure Web Sites. Afterwards you will connect to and consume that service from your Tessel microcontroller, resulting in your controller blinking the leds a random number of times.
 
 #### [Lab 4 - Service Bus Queues](labs/service-bus-queues) ####
-##### Sending telemetry to Azure using Service Bus Queues #####
+##### Send messages from Tessel to Service Bus Queue #####
 Asynchronous messaging patterns are the architectural cornerstone of reliable and scalable applications. Integrating cloud resources with Service Bus messaging ensures smooth operation under heavy and variable load with the durability to survive intermittent failures. In this lab you will learn how to use Service Bus Queue by creating a Tessel app that put (enqueue) messages in a Queue using the REST API, later a consumer app will get (dequeue) the message from the queue using the Azure node.js SDK.
 
 #### [Lab 5 - Azure EventHub](labs/event-hub) ####
