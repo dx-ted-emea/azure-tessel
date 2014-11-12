@@ -58,7 +58,13 @@ Applications can authenticate to Microsoft Azure Service Bus using either Shared
 
 ![ServiceBus](images/createtoken.PNG)
 
-Shared access policies 
+* scroll down to "Shared access key generator" 
+* Press the image to copy the key near the PRIMARY KEY, this action will copy the key to your clip board
+* Save this key, you will use it later in this lab
+
+![ServiceBus](images/getsas.PNG)
+
+
 
 ### Part 2
 (Text in part two goes here)
