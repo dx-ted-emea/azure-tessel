@@ -14,19 +14,35 @@ In order to successfully complete this lab you need to:
 Instructions
 ------------
 In this lab you will create a tessel app using the config button on the tessel device. Whenever the button will be pressed a message will be put in ServiceBus queue. Later you will create a node.js app using the Azure node.js SDK to consume the messages from the queue and display the raw message.
+The code for this lab includes the following files:
+* CreateSASToken.js - The code for getting the authentication credentials from ServiceBus
+* button_sbqueue_sas.js - The tessel app, whenever the Config button is being pushed a message is sent to the ServiceBus Queue.
+* readSBQueue_setconnection.js - Check if there are any message in the ServiceBus Queue and dispaly its raw data.
+* ambient_sbqueue_sas.js - This is another example for putting a message in ServiceBus Queue, you can use it if you own the [Tessel Ambient Modole](https://tessel.io/modules#module-ambient), but this is not reqiered in order to complete this lab.
+
 
 ### Part 1 - Find the Config button
-Before start codeing lets make sure you know which button to press. Take a look at your tessel device and look for the Config button
-![config button](images/ConfigButton.PNG). 
+* Before start codeing lets make sure you know which button to press. Take a look at your tessel device and look for the Config button. In the picture below the Config button is marked in a blue.
+![config button](images/ConfigButton.PNG)
 
 
 
-
-### Part 2 - Create Service Bus Namespace and Queue, get the authentication credentials
+### Part 2 - Create Service Bus Namespace and Queue, Create the authentication credentials
 #### Part 2.1 - Create Service Bus Namespace and Queue
-The very first thing you will have to do when working with Service Bus is to create a namespace.
-Go to the [Azure Managment Portal](https://manage.windowsazure.com/@gwraoa.onmicrosoft.com), in the bottom left corner click the "+NEW" button. Select "APP SERVICES" -> "SERVICE BUS" -> "QUEUE" -> "CUSTOME CREATE".
+* The very first thing you will have to do when working with Service Bus is to create a namespace.
+Go to the [Azure Managment Portal](https://manage.windowsazure.com), in the bottom left corner click the "+NEW" button. Select "APP SERVICES" -> "SERVICE BUS" -> "QUEUE" -> "CUSTOME CREATE".
+![Create ServiceBus Queue](images/newsb.PNG)
+* In the "Add a new queue" dialog box, insert the following details:
+  * QUEUE NAME - give a name to your queue
+  * REGION - select the nearest region to your location
+  * NAMESPACE - select Create a new namespace
+  * NAMESPACE NAME - give your namespace a name
+![Create ServiceBus Queue](images/addqueue.PNG)
 
+#### Part 2.2 - Create the authentication credentials
+Applications can authenticate to Microsoft Azure Service Bus using either Shared Access Signature (SAS) authentication, or by authenticating through Microsoft Azure Active Directory Access Control (also known as Access Control Service or ACS). In this lab we use SAS authentication. You will create a SAS Token that you will use later to authenticate from the Tessel device to ServiceBus.
+* To create the SAS key go to [Azure Managment Portal](https://manage.windowsazure.com), in the menu on the left scroll down and select "SERVICE BUS"
+![Create ServiceBus Queue](images/newsb.PNG)
 
 
 

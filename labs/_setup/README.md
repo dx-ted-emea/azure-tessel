@@ -1,5 +1,5 @@
-Setup
-=====
+Setting up your environment for the labs
+========================================
 In this lab, we will help you setup your computer, your Tessel and your Microsoft Azure account. After finishing this lab you will have the tools you need installed on your computer, a connection to your Tessel and an active account on Microsoft Azure.
 
 Setup your Microsoft Azure Subscription

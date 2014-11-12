@@ -138,6 +138,8 @@ Select some of them and download those blobs using the command
 
 	> azure storage blob download weatherlogs <blobname> c:\tmp
 
+The format of the data and the blobs we've just uploaded to Azure would probably be an exelent candidate to examine more with technologies like Hadoop or similar. Microsoft Azure provides a 100% Appache Hadoop-based service called, [HDInsight](http://azure.microsoft.com/en-us/services/hdinsight/).
+ 
 Explore the different options you have of interacting with Blob Storage using Azure-CLI.
 
 Summary

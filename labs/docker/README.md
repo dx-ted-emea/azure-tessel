@@ -204,16 +204,18 @@ Add another file called start.sh. The commands in this script file are not cache
 
 	pico start.sh
 	
-Insert the following snippet in the start.sh file. Replace the GITREPO tag with the GIT repository URL (https://github.com/[name]/[REPO].git) that contains the REST API code for our Node.js application.
+Insert the following snippet in the start.sh file. In this script we will download the sourcecode for our REST API and run it in the Node.js runtime. Note that you could also use git to clone a repository containing the Node.js service code. In case you want to try this replace the GITREPO tag with the GIT repository URL (https://github.com/[name]/[REPO].git) that contains the REST API code for your Node.js service. 
 
-	cd /tmp
+	//cd /tmp
 
-	# try to remove the repo if it already exists
-	rm -rf [GITREPO]; true
+	//Uncomment the commented lines in this script to swithc to using Git repos. When you do, comment out the curl command.
+	//# try to remove the repo if it already exists
+	//rm -rf [GITREPO]; true
 
-	git clone [GITREPO]
-
-	cd [GITREPO]
+	curl -o server.js  https://raw.githubusercontent.com/dx-ted-emea/azure-tessel/master/labs/websites/api/server.js
+	
+	//git clone [GITREPO]
+	//cd [GITREPO]
 
 	npm install
 
@@ -221,9 +223,17 @@ Insert the following snippet in the start.sh file. Replace the GITREPO tag with 
 
 Save the content of the file by pressing CTRL-O and exit pressing CTRL-X.
 
-Run the build process by initiating the Docker 'build' command. Mark the . at the end stating the current directory contains the Dockerfile:
+Run the build process by initiating the Docker 'build' command. Mark the . at the end stating the current directory contains the Dockerfile. The -t option tags the image with a name in which we optionally can include a username for housekeeping and publication to the public image repository called Docker Hub:
 
-	docker build -t myname/my-nodejs-webserver .
+	docker build -t myname/tesselapi .
+	
+The process of building images can take a long time depending on bandwidth available for package downloads and VM performance, but this is a one time procedure. Once we have our base image readty all changes made are put on top and no complete rerun of the build process is needed. Docker uses a very sophisticated system of layering images on top of eachother. The steps in the Dockerfile, for example, each result in a new image being made. An advantage of this is that when you debug a scipt you can start from the last succesfull stript line and continue from there.
+
+Now for 'Le moment suprême' we run the image so we get a container out of it:
+	
+	docker run -p 80:80 myname/tesselapi
+
+With this last command we provided the ports to be opened. First port is the host port, meaning the port that the host would need use to get to the container, and the second is the container port which the container internally expects to be getting input from.
 
 You will see in the terminal that the script is being executed. The script does the following:
 * Grab and build on top of the standard Ubuntu image
