@@ -1,5 +1,5 @@
-Using EventHubs for sending telemetry data at high scale
-========================================================
+Using EventHubs for sending telemetry at high scale
+===================================================
 _Many modern solutions are faced with the challenge of how to securely and reliably ingest very large amounts of information from many concurrent publishers. Microsoft Azure EventHubs is a managed platform service that provides a foundation for large-scale data ingestion in a broad variety of scenarios. Examples of such scenarios are behavior tracking in mobile apps, traffic information from web farms, in-game event capture in console games, or telemetry data collected from industrial machines or connected vehicles. The common role that EventHubs plays in solution architectures is that it acts as the “front door” for an event pipeline, often called an event ingestor. An event ingestor is a component or service that sits between event producers and event consumers to decouple the production of an event stream from the consumption of those events._
 
 You'll create an EventHub with the required configuration and security settings using the Microsoft Azure Portal or custom code using Visual Studio. Afterwards you will send telemetry from your Tessel microcontroller to this EventHub. 

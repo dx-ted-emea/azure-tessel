@@ -1,2 +1,0 @@
-Blinky Websites Edition
-==============================
