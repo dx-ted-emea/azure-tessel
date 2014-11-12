@@ -140,7 +140,7 @@ Copy and save the output string, you will use it in this lab at part 5.
 In this part you will create an App that run on the Tessel. Whenever the Config button is pushed it will put a message in the ServiceBus Queue.
 #### Part 5.1 - Open and Edit the button_sbqueue_sas.js file
 * The source code for this lab includes a file named button_sbqueue_sas.js. Open this file in a text editor.
-* Look for the lines below and edit the requested details. 
+* Look for the lines below and edit the requested details. The Key parameter is the SASToken you retrived in Part 4.2 
 
 
 Look for the following lines in the code, these are the lines you should edit:
@@ -151,11 +151,35 @@ Look for the following lines in the code, these are the lines you should edit:
 	//var Key = '<your-SAS-key>';
 
 
-#### Part 2.1
-(Text in part two point one goes here)
+#### Part 5.2 - Run the button_sbqueue_sas.js file
+* Make sure your Tessel device is pluged in, and has a WIFI connection.
+* Open Node.js command prompt and CD to the location of button_sbqueue_sas.js
 
-#### Part 2.2
-(Text in part two point two goes here)
+To run the App type: 
+
+	// tessel run button_sbqueue_sas.js
+
+* When the App is running on the Tessel, press the Config button on the Tessel device.
+* Upon a succesful deployment you will see:
+
+On the command window running the button_sbqueue_sas.js code:
+
+	//putMessageInQueue:statusCode:  201
+	
+On the command window running the readSBQueue_setconnection.js code:
+
+	//{ body: 'button pressed on tessel',
+  	//  brokerProperties:
+   	//    { DeliveryCount: 1,
+     	//	EnqueuedSequenceNumber: 0,
+     	//	EnqueuedTimeUtc: 'Wed, 12 Nov 2014 10:31:36 GMT',
+     	//	MessageId: 'dd20ae5468424d7a854baed268d9ee63',
+     	//	PartitionKey: '124',
+     	//	SequenceNumber: 9288674231451648,
+     	//	State: 'Active',
+     	//	TimeToLive: 1209600 },
+  	//    contentType: 'application/atom+xml;type=entry;charset=utf-8' }
+
 
 Summary
 -------
