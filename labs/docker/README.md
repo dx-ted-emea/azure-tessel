@@ -227,7 +227,7 @@ Run the build process by initiating the Docker 'build' command. Mark the . at th
 
 	docker build -t myname/my-nodejs-webserver .
 
-Now for 'le moment supreme' we run the image so we get a container out of it:
+Now for 'Le moment suprême' we run the image so we get a container out of it:
 	
 	docker run -p 8080:8080 <username>/my-nodejs-webserver
 
