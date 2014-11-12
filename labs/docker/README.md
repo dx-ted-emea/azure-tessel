@@ -225,11 +225,13 @@ Save the content of the file by pressing CTRL-O and exit pressing CTRL-X.
 
 Run the build process by initiating the Docker 'build' command. Mark the . at the end stating the current directory contains the Dockerfile. The -t option tags the image with a name in which we optionally can include a username for housekeeping and publication to the public image repository called Docker Hub:
 
-	docker build -t myname/my-nodejs-webserver .
+	docker build -t myname/tesselapi .
+	
+The process of building images can take a long time depending on bandwidth available for package downloads and VM performance, but this is a one time procedure. Once we have our base image readty all changes made are put on top and no complete rerun of the build process is needed. Docker uses a very sophisticated system of layering images on top of eachother. The steps in the Dockerfile, for example, each result in a new image being made. An advantage of this is that when you debug a scipt you can start from the last succesfull stript line and continue from there.
 
 Now for 'Le moment suprême' we run the image so we get a container out of it:
 	
-	docker run -p 8080:8080 <username>/my-nodejs-webserver
+	docker run -p 80:80 myname/tesselapi
 
 With this last command we provided the ports to be opened. First port is the host port, meaning the port that the host would need use to get to the container, and the second is the container port which the container internally expects to be getting input from.
 
