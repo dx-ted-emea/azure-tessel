@@ -37,7 +37,6 @@ Go to the [Azure Managment Portal](https://manage.windowsazure.com/@gwraoa.onmic
   * REGION - select the nearest region to your location
   * NAMESPACE - select Create a new namespace
   * NAMESPACE NAME - give your namespace a name
-
 ![Create ServiceBus Queue](images/addqueue.PNG)
 
 
