@@ -200,7 +200,7 @@ Paste the following script in the Dockerfile:
 	
 Save the content of the file by pressing CTRL-O and exit pressing CTRL-X
 
-Add another file called start.sh. The commands in this script file are not cached by Docker (due to the CMD line in the Dockerfile) so we can update these steps faster since they will be executed everytime we 'run' command as we will see later on.
+Add another file called start.sh. The commands in this script file are not cached by Docker (due to the CMD line in the Dockerfile) so we can update these steps faster since they will be executed everytime we use the 'run' command as we will see later on.
 
 	pico start.sh
 	
