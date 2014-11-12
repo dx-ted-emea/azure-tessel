@@ -41,7 +41,7 @@ In this lab you'll first create an Azure Storage Account with a table. Next you 
 In this lab you create a Notification Hub in Azure Service bus and a mobile App that registers for notifications. Next you build a program that uses the Tessel __Ambient module__ to trigger sending notifications to Notification Hub
 
 #### [Lab 9 - Dockers](labs/dockers) ####
-##### Running the REST API created in the [Azure Websites](labs/websites) lab in a Docker container hosted on an Azure VM#####
+##### Running the REST API created in the [Azure Websites](labs/websites) lab in a Docker container hosted on an Azure Linux VM#####
 Microsoft Azure provides an awesome place for you to host many kinds of operating systems and solution. During this lab we will take an existing Node.js RESTful Web Service and host it in a Docker container running on Linux in Microsoft Azure. When everything is up and running we will connect to and consume that service from your Tessel microcontroller.
 
 ---
