@@ -35,7 +35,7 @@ Instructions
 * Use PuTTYGen to generate a SSH key and a derived key file. We will use these to setup and connect our VM later on.
 ![Portal gallery](images/PuttyGen.png)
  
-* Create a Linux VM by going to the Microsoft [Azure portal]. Click on the plus icon (New) in lower left corner and select 'Virtual machines' in the Marketplace blade (blades are the sections that build up the horizontal portal segments.
+* Create a Linux VM by going to the Microsoft [Azure portal]. Click on the '+ NEW' button in the lower left corner and select 'Virtual machines' in the Marketplace blade (blades are the sections that build up the horizontal portal segments).
 
 * In the list select 'Everything' so we can use the search feature to look for 'Ubuntu'. This will display all Ubuntu VM images available. Select the one with '14.04 LTS' in its name and press the Create button ast the bottom.
 ![Portal gallery](images/UbuntuFound.png)
