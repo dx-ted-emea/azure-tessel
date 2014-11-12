@@ -61,7 +61,7 @@ Applications can authenticate to Microsoft Azure Service Bus using either Shared
 
 * scroll down to "Shared access key generator" 
 * Press the image to copy the key near the PRIMARY KEY, this action will copy the key to your clip board
-* Save this key, you will use it later in this lab
+* Save this key, you will use it later in this lab at Part 4.1
 
 ![ServiceBus](images/getsas.PNG)
 
@@ -92,14 +92,51 @@ To get the ServiceBus Connection String:
 Open Node.js command prompt and CD to the location of readSBQueue_setconnection.js. Run the readSBQueue_setconnection.js with node.
 
 	//node readSBQueue_setconnection.js
+	
+When the app is running it waits for messages in the Queue, when it recives a message it will dispaly its raw data, for example:
+	
+	//{ body: 'button pressed on tessel',
+  	//  brokerProperties:
+   	//    { DeliveryCount: 1,
+     	//	EnqueuedSequenceNumber: 0,
+     	//	EnqueuedTimeUtc: 'Wed, 12 Nov 2014 10:31:36 GMT',
+     	//	MessageId: 'dd20ae5468424d7a854baed268d9ee63',
+     	//	PartitionKey: '124',
+     	//	SequenceNumber: 9288674231451648,
+     	//	State: 'Active',
+     	//	TimeToLive: 1209600 },
+  	//    contentType: 'application/atom+xml;type=entry;charset=utf-8' }
+  	
+At this point there are not messages in the queue so nothing should be printed to the console. Leave this app running so when you will put messages in the queue from the tessel you'll see it.
 
-#### Part 2.1
-(Text in part two point one goes here)
 
-#### Part 2.2
-(Text in part two point two goes here)
 
-#### Part 3
+#### Part 4 - Get the SAS Token for the Tessel code
+In this part you will get the SAS Token you should send for the ServiceBus from the Tessel for authentication.
+#### Part 4.1 - Open and Edit the CreateSASToken.js file
+* The source code for this lab includes a file named CreateSASToken.js. Open this file in a text editor.
+* Look for the lines below and edit the requested details. 
+* The AccessKeyName is the POLICY NAME you created in Part 2.2
+* The AccessKey is the key you retrived in Part 2.2
+
+
+Look for the following lines in the code, these are the lines you should edit:
+
+	////ServiceBus parameters
+	//var namespace = '<Your-ServiceBus-Namespace>';
+	//var queue ='<Your-Queue>';
+	//var AccessKeyName = '<Your-AccessKey-Name>';
+	//var AccessKey = '<Your-AccessKey>';
+
+#### Part 4.2 - Run the CreateSASToken.js file
+Open Node.js command prompt and CD to the location of CreateSASToken.js. Run the CreateSASToken.js with node.
+
+	//node CreateSASToken.js
+
+Copy and save the output string, you will use it in this lab at part 5.
+
+
+#### Part 5 - 
 (Text in part three goes here)
 
 	// Use comments in code only if code is otherwise confusing.
@@ -110,6 +147,13 @@ Open Node.js command prompt and CD to the location of readSBQueue_setconnection.
 	//var queue = '<your-queue-name>';
 
 	code.indent(tab); // Indent code with 4 spaces (or tab) to have it appear as code
+
+
+#### Part 2.1
+(Text in part two point one goes here)
+
+#### Part 2.2
+(Text in part two point two goes here)
 
 Summary
 -------
