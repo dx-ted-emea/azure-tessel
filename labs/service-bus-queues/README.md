@@ -16,8 +16,9 @@ Instructions
 In this lab you will create a tessel app using the config button on the tessel device. Whenever the button will be pressed a message will be put in ServiceBus queue. Later you will create a node.js app using the Azure node.js SDK to consume the messages from the queue and display the raw message.
 
 ### Part 1 - Find the Config button
-Before start codeing lets make sure you know which button to press. Take a look at your tessel device and look for the Config button
-![config button](images/ConfigButton.PNG). 
+* Before start codeing lets make sure you know which button to press. Take a look at your tessel device and look for the Config button. In the picture below the Config button is marked in a blue.
+![config button](images/ConfigButton.PNG)
+
 
 
 
