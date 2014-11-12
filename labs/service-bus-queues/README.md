@@ -136,17 +136,19 @@ Open Node.js command prompt and CD to the location of CreateSASToken.js. Run the
 Copy and save the output string, you will use it in this lab at part 5.
 
 
-#### Part 5 - 
-(Text in part three goes here)
+#### Part 5 - Create and Run the Tessel App
+In this part you will create an App that run on the Tessel. Whenever the Config button is pushed it will put a message in the ServiceBus Queue.
+#### Part 5.1 - Open and Edit the button_sbqueue_sas.js file
+* The source code for this lab includes a file named button_sbqueue_sas.js. Open this file in a text editor.
+* Look for the lines below and edit the requested details. 
 
-	// Use comments in code only if code is otherwise confusing.
-	// We want the code to be as good and clean written that it
-	// is self-explanatory and doesn't need comments. Still don't
-	// be afraid to use comments if needed.
-	//var sbConnection = '<your-servicebus-connection-string>';
+
+Look for the following lines in the code, these are the lines you should edit:
+
+	// Service Bus Parameters
+	//var namespace = '<your-servicebus-namespace>';
 	//var queue = '<your-queue-name>';
-
-	code.indent(tab); // Indent code with 4 spaces (or tab) to have it appear as code
+	//var Key = '<your-SAS-key>';
 
 
 #### Part 2.1
