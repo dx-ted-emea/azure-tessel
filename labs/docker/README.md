@@ -91,6 +91,7 @@ If the browser does not start click [this link] to download it manually.
 **Optional (Windows OS only):** We can also use the Linux Docker client VM , instead of our local machine, to manage Azure. To do so we need to copy the publish settings file we just downloaded to the Linux VM in Azure. Open a command prompt locally (Windows) and run:
  
     set PATH=c:\Program Files(x86)\PuTTY
+    
     pscp -i [PATH TO .PPK FILE] [PATH TO PUBLISH SETTINGS FILE]  [USER NAME]@[HOST NAME].cloudapp.net:/home/[USER NAME]/ 
 
 The tool pscp is part of the PuTTY installation. 
@@ -113,6 +114,7 @@ Run the statement below to get access to your Azure subscription using the path 
 Check and set the Azure subscription you want to use:
 
     azure account list
+    
     azure account set '[SUBSCRIPTION NAME]'
 
 ! For reasons unknown to the writer the CLI calls subscriptions 'accounts' but the term account in Azure refers to the Microsoft user account, or organizational Active Directory user, that holds one or more subscriptions.
@@ -176,7 +178,6 @@ We could also use the tls command to setup an image for our container manually b
 
 Create a folder named 'TesselAPI' and in it a file named 'Dockerfile' on the local machine or the Linux docker client VM (we use PICO as our text editor):
 
-	cat > Dockerfile
 	pico Dockerfile
 	
 Paste the following script in the Dockerfile: 
@@ -201,7 +202,6 @@ Save the content of the file by pressing CTRL-O and exit pressing CTRL-X
 
 Add another file called start.sh. The commands in this script file are not cached by Docker (due to the CMD line in the Dockerfile) so we can update these steps faster since they will be executed everytime we 'run' command as we will see later on.
 
-	cat > start.sh
 	pico start.sh
 	
 Insert the following snippet in the start.sh file. Replace the GITREPO tag with the GIT repository URL (https://github.com/[name]/[REPO].git) that contains the REST API code for our Node.js application.
