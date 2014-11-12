@@ -9,15 +9,21 @@ Prerequisites
 In order to successfully complete this lab you need to:
 
 * Have successfully setup your Azure Subscription, your development environment and your Tessel according to instructions outlined in the [Setup Lab](../_setup).
-* You have a tessel ambient module and its configured acording to: <a href="http://start.tessel.io/modules/ambient">Tessel ambient module</a> 
 
 
 Instructions
 ------------
-(Describe the lab here. Divide the lab into logical parts in order for the participant to easily follow along. If possible, describe the steps in the lab using steps that are platform agnostic, i.e. it should work using whatever operating system you want. If possible use Azure-CLI to manage Windows Azure, but also explain how to use the portal if you feel it adds extra value or visibility. Remember that the portal(s) are changing faster than Azure-CLI, so the labs will be easier to maintain if we use Azure-CLI and since the Tessel's programming tools are used from the console, we might as well stick with it as much as possible. The preferred programming language on the server and client side should be JavaScript if possible in order to keep complexity of setup to a minimum.)
+In this lab you will create a tessel app using the config button on the tessel device. Whenever the button will be pressed a message will be put in ServiceBus queue. Later you will create a node.js app using the Azure node.js SDK to consume the messages from the queue and display the raw message.
 
-### Part 1 - Create Service Bus Namespace and Queue, get the authentication credentials
-#### Part 1.1 - Create Service Bus Namespace and Queue
+### Part 1 - Find the Config button
+Take a look at your tessel device and look for the [config button](.images\ConfigButton.PNG). 
+
+
+
+you can see the raw message in a node.js queue consumer app.
+Before start codeing lets make sure you know which button to press. Take 
+### Part 2 - Create Service Bus Namespace and Queue, get the authentication credentials
+#### Part 2.1 - Create Service Bus Namespace and Queue
 The very first thing you will have to do when working with Service Bus is to create a namespace.
 Go to the [Azure Managment Portal](https://manage.windowsazure.com/@gwraoa.onmicrosoft.com), in the bottom left corner click the "+NEW" button. Select "APP SERVICES" -> "SERVICE BUS" -> "QUEUE" -> "CUSTOME CREATE".
 
