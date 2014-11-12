@@ -45,4 +45,4 @@ In this lab you create a Notification Hub in Azure Service bus and a mobile App 
 Microsoft Azure provides an awesome place for you to host many kinds of operating systems and solution. During this lab we will take a custom build Node.js REST Ful Web Service and host it in Docker container running on Linux in Microsoft Azure. When everything is up and running we will connect to and consume that service from your Tessel microcontroller.
 
 ---
-_The code provided in these hands on labs should only be seen as samples, they have not gone through the rigorous testing needed for production usage. **Code is provided as is and without any warranties.** You are free to use it and please help fix any bugs you find._
+_The code provided in these hands on labs should only be seen as samples, they have not gone through the rigorous testing needed for production usage. The full license can be found [here](LICENSE)_
