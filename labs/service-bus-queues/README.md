@@ -69,16 +69,11 @@ Applications can authenticate to Microsoft Azure Service Bus using either Shared
 
 ### Part 3 - Create the Node.js app to read messages from ServiceBus QUEUE
 In this part you will create the consumer app, that read message from the queue and dispaly the message raw data.
-Since this app is running on a desktop we will use the [Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/)
+Since this app is running on a desktop we will use the [Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/).
 * The source code for this lab includes a file named readSBQueue_setconnection.js. Open this file in a text editor.
-* Look for the following lines
+* Edit the details for the ServiceBus connection string and the Queue name in the code.
+Look for the following lines
 
-(Text in part three goes here)
-
-	// Use comments in code only if code is otherwise confusing.
-	// We want the code to be as good and clean written that it
-	// is self-explanatory and doesn't need comments. Still don't
-	// be afraid to use comments if needed.
 	//var sbConnection = '<your-servicebus-connection-string>';
 	//var queue = '<your-queue-name>';
 
