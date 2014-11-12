@@ -16,12 +16,12 @@ Instructions
 In this lab you will create a tessel app using the config button on the tessel device. Whenever the button will be pressed a message will be put in ServiceBus queue. Later you will create a node.js app using the Azure node.js SDK to consume the messages from the queue and display the raw message.
 
 ### Part 1 - Find the Config button
-Take a look at your tessel device and look for the [config button](.images\ConfigButton.PNG). 
+Before start codeing lets make sure you know which button to press. Take a look at your tessel device and look for the Config button
+![config button](images/ConfigButton.PNG). 
 
 
 
-you can see the raw message in a node.js queue consumer app.
-Before start codeing lets make sure you know which button to press. Take 
+
 ### Part 2 - Create Service Bus Namespace and Queue, get the authentication credentials
 #### Part 2.1 - Create Service Bus Namespace and Queue
 The very first thing you will have to do when working with Service Bus is to create a namespace.
