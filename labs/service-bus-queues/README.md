@@ -189,7 +189,7 @@ You have:
 * Put a message in the Queue
 * Read a message from the Queue
 * Used the CreateSASToken.js tool to generate a SAS token (you can also use this for Service Bus Topics, Events Hub and Notification Hub)
-* Used the [Azure Node.js SDK]((http://azure.microsoft.com/en-us/develop/nodejs/)
+* Used the [Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/)
 * Deployed a program to the Tessel device that sends messages to ServiceBus Queue using REST API. 
 
 
@@ -197,7 +197,7 @@ __Go ahead and play with the solution. Tweak it, extend it, use it in a bigger c
 
 More Information
 ----------------
-[Shared Access Signature Authentication with Service Bus](http://msdn.microsoft.com/en-us/library/azure/dn170477.aspx)
-[ How to Use Service Bus Queues ](http://azure.microsoft.com/en-us/documentation/articles/service-bus-nodejs-how-to-use-queues/)
-[Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/)
+* [Shared Access Signature Authentication with Service Bus](http://msdn.microsoft.com/en-us/library/azure/dn170477.aspx)
+* [ How to Use Service Bus Queues ](http://azure.microsoft.com/en-us/documentation/articles/service-bus-nodejs-how-to-use-queues/)
+* [Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/)
 
