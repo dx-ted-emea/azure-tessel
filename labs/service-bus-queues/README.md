@@ -52,6 +52,14 @@ Applications can authenticate to Microsoft Azure Service Bus using either Shared
 
 ![ServiceBus](images/yourqueue.PNG)
 
+* Go to the CONFIGURE tab and scroll down to "Shared access policies" 
+* Create a new policy by giving it a name and select "manage"
+* Save it by presseing the SAVE button at the bottom of the page
+
+![ServiceBus](images/createtoken.PNG)
+
+Shared access policies 
+
 ### Part 2
 (Text in part two goes here)
 
