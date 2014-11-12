@@ -1,14 +1,14 @@
-Tessel - Microsoft Azure Hands on Labs
+﻿Azure - Tessel Hands on Labs
 ======================================
 
 A set of hands on labs that will help you get up to speed with using Microsoft Azure together with your Tessel micro controller.
 
 [These labs](labs) build up on the information you’ll find on the official sites for:
 
-* Microsoft Azure http://azure.com and
-* Tessel https://tessel.io
+* [Microsoft Azure](http://azure.com) and
+* [Tessel](https://tessel.io)
 
-and are here to accomodate you in acceleration of using these two great technologies/services together. Please make sure you visit the official sites for up to date information and more hands-on labs.
+... and are here to accommodate you in acceleration of using these two great technologies/services together. Please make sure you visit the official sites for up to date information and more hands-on labs.
 
 #### [Lab 1 - Setup](labs/_setup)####
 In this lab you find the steps to help you setup your computer, your Tessel and your Microsoft Azure account. After completing the lab you have a working environment ready for the other labs.
