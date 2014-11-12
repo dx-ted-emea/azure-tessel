@@ -1,7 +1,9 @@
 ﻿Azure - Tessel Hands on Labs
 ======================================
 
-A set of hands on labs that will help you get up to speed with using Microsoft Azure together with your Tessel micro controller. These labs build upon the information you’ll find on the official sites for:
+There is a lot of buzz around Internet of Things, IoT, nowadays. But what is it? A quick search on Internet will introduce as many questions as you will find answers. So let’s leave the definition to someone else and just assume we want some microcontrollers to communicate with each other and the Internet. How do we do that and what kind of challenges might we encounter? One thing is certain, you’ll need a microcontroller but we might not know how many of them we’re going to deploy eventually. Hundreds, thousands or perhaps millions of devices? We certainly would need a scalable backend to handle that unpredictable load in order to keep up with the demand of backend resources.
+
+Microsoft Azure is a scalable cloud platform for you to build such a solutions on and Tessel is a competent microcontroller that could be used to implement the devices you want to deploy. Here you’ll find a set of hands on labs that will help you get up to speed with using Microsoft Azure together with the Tessel micro controller. These labs build upon the information you’ll find on the official sites for:
 
 * [Microsoft Azure](http://azure.com) and
 * [Tessel](https://tessel.io)
@@ -45,4 +47,4 @@ In this lab you create a Notification Hub in Azure Service bus and a mobile App 
 Microsoft Azure provides an awesome place for you to host many kinds of operating systems and solution. During this lab we will take an existing Node.js RESTful Web Service and host it in a Docker container running on Linux in Microsoft Azure. When everything is up and running we will connect to and consume that service from your Tessel microcontroller.
 
 ---
-_The code provided in these hands on labs should only be seen as samples, they have not gone through the rigorous testing needed for production usage. The full license can be found [here](LICENSE)_
+_The code provided in these hands on labs should only be seen as samples, they have not gone through the rigorous testing needed for production usage. This set of labs are released under "the MIT License (MIT)" and fhe full license can be found [here](LICENSE)_
