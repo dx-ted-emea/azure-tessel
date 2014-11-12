@@ -18,7 +18,7 @@ In this lab you'll create a custom RESTful Node.js Mobile Service in Azure using
 
 #### [Lab 3 - Azure Websites](labs/websites) ####
 ##### Creating and Calling a Custom REST API with Azure WebSites #####
-In this lab you'll create a custom RESTful Web Service using Node.js and host it in Azure WebSites. Afterwards you will connect to and consume that service from your Tessel microcontroller, resulting in your controller blinking the leds a random number of times.
+In this lab you'll create a custom RESTful Web Service using Node.js and host it in Azure Web Sites. Afterwards you will connect to and consume that service from your Tessel microcontroller, resulting in your controller blinking the leds a random number of times.
 
 #### [Lab 4 - Service Bus Queues](labs/service-bus-queues) ####
 ##### Sending telemetry to Azure using Service Bus Queues #####
@@ -41,8 +41,8 @@ In this lab you'll first create an Azure Storage Account with a table. Next you 
 In this lab you create a Notification Hub in Azure Service bus and a mobile App that registers for notifications. Next you build a program that uses the Tessel __Ambient module__ to trigger sending notifications to Notification Hub
 
 #### [Lab 9 - Dockers](labs/dockers) ####
-##### Creating and Calling a Custom REST API hosted on an Azure VM running Dockers #####
-Microsoft Azure provides an awesome place for you to host many kinds of operating systems and solution. During this lab we will take a custom build Node.js REST Ful Web Service and host it in Docker container running on Linux in Microsoft Azure. When everything is up and running we will connect to and consume that service from your Tessel microcontroller.
+##### Running the REST API created in the [Azure Websites](labs/websites) lab in a Docker container hosted on an Azure VM#####
+Microsoft Azure provides an awesome place for you to host many kinds of operating systems and solution. During this lab we will take an existing Node.js RESTful Web Service and host it in a Docker container running on Linux in Microsoft Azure. When everything is up and running we will connect to and consume that service from your Tessel microcontroller.
 
 ---
 _The code provided in these hands on labs should only be seen as samples, they have not gone through the rigorous testing needed for production usage. The full license can be found [here](LICENSE)_
