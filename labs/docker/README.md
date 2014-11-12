@@ -204,16 +204,18 @@ Add another file called start.sh. The commands in this script file are not cache
 
 	pico start.sh
 	
-Insert the following snippet in the start.sh file. Replace the GITREPO tag with the GIT repository URL (https://github.com/[name]/[REPO].git) that contains the REST API code for our Node.js application.
+Insert the following snippet in the start.sh file. In this script we will download the sourcecode for our REST API and run it in the Node.js runtime. Note that you could also use git to clone a repository containing the Node.js service code. In case you want to try this replace the GITREPO tag with the GIT repository URL (https://github.com/[name]/[REPO].git) that contains the REST API code for your Node.js service. 
 
-	cd /tmp
+	//cd /tmp
 
-	# try to remove the repo if it already exists
-	rm -rf [GITREPO]; true
+	//Uncomment the commented lines in this script to swithc to using Git repos. When you do, comment out the curl command.
+	//# try to remove the repo if it already exists
+	//rm -rf [GITREPO]; true
 
-	git clone [GITREPO]
-
-	cd [GITREPO]
+	curl -o server.js  https://raw.githubusercontent.com/dx-ted-emea/azure-tessel/master/labs/websites/api/server.js
+	
+	//git clone [GITREPO]
+	//cd [GITREPO]
 
 	npm install
 
