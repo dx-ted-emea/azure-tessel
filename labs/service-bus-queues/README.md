@@ -9,6 +9,7 @@ Prerequisites
 In order to successfully complete this lab you need to:
 
 * Have successfully setup your Azure Subscription, your development environment and your Tessel according to instructions outlined in the [Setup Lab](../_setup).
+* You have installed the [Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/)
 
 
 Instructions
@@ -66,10 +67,10 @@ Applications can authenticate to Microsoft Azure Service Bus using either Shared
 
 
 
-### Part 2
-(Text in part two goes here)
-
-* (Bullet one)
+### Part 3 - Create the Node.js app to read messages from ServiceBus QUEUE
+In this part you will create the consumer app, that read message from the queue and dispaly the message raw data.
+Since this app is running on a desktop we will use the [Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/)
+* The source code for this lab includes a file named readSBQueue_setconnection.js. Open this file in a text editor.
 * (Bullet two)
   * (Bullet two point one)
   * (Bullet two point two)
