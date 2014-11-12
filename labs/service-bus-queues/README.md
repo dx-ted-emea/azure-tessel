@@ -31,7 +31,7 @@ The code for this lab includes the following files:
 #### Part 2.1 - Create Service Bus Namespace and Queue
 * The very first thing you will have to do when working with Service Bus is to create a namespace.
 Go to the [Azure Managment Portal](https://manage.windowsazure.com), in the bottom left corner click the "+NEW" button. Select "APP SERVICES" -> "SERVICE BUS" -> "QUEUE" -> "CUSTOME CREATE".
-![Create ServiceBus Queue](images/newsb.PNG)
+![Create ServiceBus NS](images/newsb.PNG)
 * In the "Add a new queue" dialog box, insert the following details:
   * QUEUE NAME - give a name to your queue
   * REGION - select the nearest region to your location
@@ -44,8 +44,8 @@ Applications can authenticate to Microsoft Azure Service Bus using either Shared
 
 
 * To create the SAS key go to [Azure Managment Portal](https://manage.windowsazure.com), in the menu on the left scroll down and select "SERVICE BUS".
-![ServiceBus](images/menusb.PNG)
 
+![ServiceBus](images/menusb.PNG)
 
 
 
