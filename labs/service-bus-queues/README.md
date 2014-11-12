@@ -183,8 +183,21 @@ On the command window running the readSBQueue_setconnection.js code:
 
 Summary
 -------
-(Include a short summary that explains what has been done during the lab. Use a couple of sentences, bullets and other, but don't explain the full lab once again)
+You have:
 
-(OTHER - REMOVE THIS SECTION)
------------------------------
-(Put whatever code files is needed for the lab directly in the lab's folder or if necessary in sub folders. Also update the main README.md file located in the "labs-folder" and link to this new lab. Make sure to spell check the lab using English US settings.)
+* Created a Service Bus Namespace and a Queue in this Namespace.
+* Put a message in the Queue
+* Read a message from the Queue
+* Used the CreateSASToken.js tool to generate a SAS token (you can also use this for Service Bus Topics, Events Hub and Notification Hub)
+* Used the [Azure Node.js SDK]((http://azure.microsoft.com/en-us/develop/nodejs/)
+* Deployed a program to the Tessel device that sends messages to ServiceBus Queue using REST API. 
+
+
+__Go ahead and play with the solution. Tweak it, extend it, use it in a bigger context. Have fun!__
+
+More Information
+----------------
+[Shared Access Signature Authentication with Service Bus](http://msdn.microsoft.com/en-us/library/azure/dn170477.aspx)
+[ How to Use Service Bus Queues ](http://azure.microsoft.com/en-us/documentation/articles/service-bus-nodejs-how-to-use-queues/)
+[Azure Node.js SDK](http://azure.microsoft.com/en-us/develop/nodejs/)
+
