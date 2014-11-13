@@ -98,7 +98,7 @@ Let's start coding and create the EventHub by code
 ![Service Bus Connection Screenshot](images/05_GetConnectionInfo_01.png)
   
 The provided connection string looks similiar to:
-```javascript
+```
 	Endpoint=sb://yournamespace.Service Bus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Va---removed characters---t6+I=
 ````
 
@@ -136,7 +136,7 @@ In order to secure the communication with the EventHub we have to provide a so c
 * In the console run the Node.Js application:
 
 	```
-	> node CreateSASToken
+	node CreateSASToken
 	```
 	
 * Copy/paste the Shared Access Signature token which is shown at the console into your blinky-EventHub.js application. Make sure you remove any CR/LF after you copied the signature from the console window. Just leave the URL Encoded characters. Your SAS token should look something like this:
