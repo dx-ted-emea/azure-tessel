@@ -226,9 +226,15 @@ Run the build process by initiating the Docker 'build' command. Mark the . at th
 
 	docker build -t username/tesselapi .
 	
+You will see in the terminal that the script is being executed. The script does the following:
+* Grab and build on top of the standard Ubuntu image
+* Update the package manager in that image
+* Install Node.js, NPM and Git
+* Add the start.sh file to a temp folder in the container image
+	
 The process of building images can take a long time depending on bandwidth available for package downloads and VM performance, but this is a one time procedure. Once we have our base image readty all changes made are put on top and no complete rerun of the build process is needed. Docker uses a very sophisticated system of layering images on top of eachother. The steps in the Dockerfile, for example, each result in a new image being made. An advantage of this is that when you debug a scipt you can start from the last succesfull stript line and continue from there.
 
-Now for 'Le moment suprême' we run the image so we get a container out of it:
+Now for 'Le moment suprême' we run the image so we get a container out of it running on our client VM, the next step will be to run it on the host we created:
 	
 	sudo docker run -d -p 80:80 username/tesselapi
 
@@ -243,14 +249,6 @@ To finish up we go ahead by publishing our container to the Docker Hub so let's 
 Next we use the following command to push our container to the Docker Hub to make it publically available (for private container repos there is some billing involved).
 
     sudo docker push username/tesselapi
-
-
-You will see in the terminal that the script is being executed. The script does the following:
-* Grab and build on top of the standard Ubuntu image
-* Update the package manager in that image
-* Install Node.js, NPM and Git
-* Add the start.sh file to a temp folder in the container image
-* Remove and clone the Git repository containing our REST API code
 
 #### Running the REST API and connecting up the Tessel client
 
