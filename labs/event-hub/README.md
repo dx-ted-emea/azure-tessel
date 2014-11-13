@@ -66,7 +66,8 @@ Congratulations! You have created and configured your first EventHub using the A
 Instructions (Creating / Configuring EventHub using C#)
 --------------------------------------------------------
 
-__Optionally if you want to create an EventHub by using C# in an on-premise console application follow these instructions.__ Please be aware; this steps are not mandatory if you have already created the EventHub using the Azure Portal. We will reuse the already created Service Bus Namespace and will add a second EventHub to the Namespace.
+__Optionally if you want to create an EventHub by using C# in an on-premise console application follow these instructions.__
+Please be aware; this steps are not mandatory if you have already created the EventHub using the Azure Portal. We will reuse the already created Service Bus Namespace and will add a second EventHub to the Namespace.
 
 We will: 
 
@@ -95,8 +96,12 @@ Let's start coding and create the EventHub by code
 * Replace "Please Provide Your Service Bus Namespace" with the name of your Service Bus Namespace.
 * Replace "Please Provide Your Service Bus Shared Access Key" with the Shared Access Key from your Service Bus Namespace. _You can find the key in the Azure Portal by clicking "CONNECTION INFORMATION" on the bottom of your page. Please take care that you request the connection information for the Service Bus Namespace and not for the already created EventHub._ 
 ![Service Bus Connection Screenshot](images/05_GetConnectionInfo_01.png)
-  The provided connection string looks similiar to:
-	Endpoint=sb://robeichsb-ns.Service Bus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=VaXjVOfZWDj47+bDtCzmbYfu2vt6+I=	
+  
+The provided connection string looks similiar to:
+```javascript
+	Endpoint=sb://yournamespace.Service Bus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Va---removed characters---t6+I=
+````
+
 * Copy the value of SharedAccessKey into your code
 * Add the following two using statements to your code at the top of the .cs file:
 
@@ -109,15 +114,24 @@ Congratulations! You have created your second EventHub using a C# application.
 
 ### Connecting Tessel to the new created EventHub
 
-Now call the EventHub from our Tessel to ingest data. The sample code is located in the [tessel](tessel) folder. Open the file "blinky-EventHub.js"
+Now call the EventHub from our Tessel to ingest data. The sample code is located in the [tessel](tessel) folder. 
 
-Examine the code and replace the following values with the values of your EventHub: 
+* Open the file [blinky-EventHub.js](tessel/blinky-EventHub.js), examine the code and replace the following values with the values of your EventHub:
+* namespace
+* hubname (If you created the EventHub with the provided C# code it's: 'eventhubcreatedwithcode')
+* deviceName (this is an identifier for your device)
+* eventHubAccessKeyName (If you created the EventHub with the provided C# code it's: 'EventHubKey')
+
+In order to secure the communication with the EventHub we have to provide a so called "Shared Access Signature Token" in each request from the Tessel to the EventHub. You can create such a "Shared Access Signature Token" with the Node.js application which is provided [tessel](tessel) folder.
+
+* Open the file [CreateSASToken.js](tessel/CreateSASToken.js)" and provide the same values that you used in the blinky-EventHub.js for 
 	* namespace
-	* hubname (If you created the EventHub with the provided C# code it's: 'eventhubcreatedwithcode')
-	* eventHubAccessKeyName (If you created the EventHub with the provided C# code it's: 'EventHubKey')
-
-In order to secure the communication with the EventHub we have to provide a so called "Shared Access Signature Token" in each request from the Tessel to the EventHub. You can create such a "Shared Access Signature Token" with the Node.js application which is provided [tessel](tessel) folder. 
-* Open the file "CreateSASToken.js" and provide the same values for namespace, hubname, eventHubAccessKeyName AND eventHubAccessKey that you used in the blinky-EventHub.js. If you don't remember the key you can find the value for eventHubAccessKey in the Azure portal (See: 'Copy the "PRIMARY KEY" and store it for further usage')
+	* hubname
+	* deviceName
+	* eventHubAccessKeyName
+	
+	* eventHubAccessKey
+	If you don't remember the key you can find the value for eventHubAccessKey in the Azure portal (See: 'Copy the "PRIMARY KEY" and store it for further usage')
 
 * In the console run the Node.Js application:
 
@@ -125,7 +139,7 @@ In order to secure the communication with the EventHub we have to provide a so c
 	> node CreateSASToken
 	```
 	
-* Copy/paste the Shared Access Signature token which is shown at the console into your blinky-EventHub.js application. The Shared Access Signature token is the value of the variable: createdSAS. Make sure you remove any CR/LF after you copied the signature from the console window. Just leave the URL Encoded characters. Your SAS token should look something like this:
+* Copy/paste the Shared Access Signature token which is shown at the console into your blinky-EventHub.js application. Make sure you remove any CR/LF after you copied the signature from the console window. Just leave the URL Encoded characters. Your SAS token should look something like this:
 	```
 	SharedAccessSignature sr=https%3A%2F%2Fyournamespace.servicebus.windows.net%2FyourEventHub%2Fpublishers%2Fmytessel%2Fmessages&sig=hrv---removed characters----QtQ%3D&se=1417774602&skn=SendRights
 	```
@@ -135,7 +149,7 @@ In order to secure the communication with the EventHub we have to provide a so c
 * Now it's time to run your application. Just key in the following commands:
 
 	```Javascript
-	> tessel run blinky-EventHub.js
+	tessel run blinky-EventHub.js
 	```
 
 You will see some output on the console and an http response code of "201 Created" meaning your request to EventHub has been fulfilled and resulted in a new "resource" being created. 
