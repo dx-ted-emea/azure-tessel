@@ -224,7 +224,7 @@ Save the content of the file by pressing CTRL-O and exit pressing CTRL-X.
 
 Run the build process by initiating the Docker 'build' command. Mark the . at the end stating the current directory contains the Dockerfile. The -t option tags the image with a name in which we optionally can include a username for housekeeping and publication to the public image repository called Docker Hub:
 
-	docker build -t username/tesselapi .
+	docker build -t [USER NAME]/tesselapi .
 	
 You will see in the terminal that the script is being executed. The script does the following:
 * Grab and build on top of the standard Ubuntu image
@@ -235,12 +235,12 @@ You will see in the terminal that the script is being executed. The script does 
 The process of building images can take a long time depending on bandwidth available for package downloads and VM performance, but this is a one time procedure. Once we have our base image readty all changes made are put on top and no complete rerun of the build process is needed. Docker uses a very sophisticated system of layering images on top of eachother. The steps in the Dockerfile, for example, each result in a new image being made. An advantage of this is that when you debug a scipt you can start from the last succesfull stript line and continue from there.
 
 Now for 'Le moment suprême' we run the image so we get a container out of it running on our client VM, the next step will be to run it on the host we created:
-	
-	sudo docker run -d -p 80:80 username/tesselapi
+
+    sudo docker run -d -p 80:80 [USER NAME]/tesselapi
 
 With this last command we provided the ports to be opened. First port is the host port, meaning the port that the host would need use to get to the container, and the second is the container port which the container internally expects to be getting input from.
 
-Update your tessel code to connect up to the container url which should resemble: http://hostname.cloudapp.net. This URL should return the random number for the Tessel.
+Update your tessel code to connect up to the container url which should resemble: http://[CLIENT HOSTNAME].cloudapp.net. This URL should return the random number for the Tessel.
 
 To finish up we go ahead by publishing our container to the Docker Hub so let's start by creating a free account at hub.docker.com. Create a repository and remember its name and your username. With these credentials we login to Docker using:
 
@@ -248,11 +248,21 @@ To finish up we go ahead by publishing our container to the Docker Hub so let's 
     
 Next we use the following command to push our container to the Docker Hub to make it publically available (for private container repos there is some billing involved).
 
-    sudo docker push username/tesselapi
+    sudo docker push [USER NAME]/tesselapi
+    
+Now head over to the Docker host we setup and execute the following:
+
+    sudo docker --tls pull [USER NAME]/tesselapi
+    
+    sudo docker --tls run -d -p 80:80 [USER NAME]/tesselapi
+
+Check the portal and use the interface or the command we used earlier to open up the ports in case you ended up with different port than mentioned earlier.
 
 #### Running the REST API and connecting up the Tessel client
 
-Now we have our REST API running in the Container host on Azure we can setup the Tessel to call it.
+Now we have our REST API running in the Container host on Azure we can setup the Tessel to call it using the http://[DOCKER HOSTNAME].cloudapp.net address.
+
+
 
 Summary
 -------
