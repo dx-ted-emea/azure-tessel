@@ -234,6 +234,17 @@ Now for 'Le moment suprême' we run the image so we get a container out of it:
 
 With this last command we provided the ports to be opened. First port is the host port, meaning the port that the host would need use to get to the container, and the second is the container port which the container internally expects to be getting input from.
 
+Update your tessel code to connect up to the container url which should resemble: http://hostname.cloudapp.net. This URL should return the random number for the Tessel.
+
+To finish up we go ahead by publishing our container to the Docker Hub so let's start by creating a free account at hub.docker.com. Create a repository and remember its name and your username. With these credentials we login to Docker using:
+
+    sudo docker login
+    
+Next we use the following command to push our container to the Docker Hub to make it publically available (for private container repos there is some billing involved).
+
+    sudo docker push username/tesselapi
+
+
 You will see in the terminal that the script is being executed. The script does the following:
 * Grab and build on top of the standard Ubuntu image
 * Update the package manager in that image
