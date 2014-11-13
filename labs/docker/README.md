@@ -182,21 +182,22 @@ Create a folder named 'TesselAPI' and in it a file named 'Dockerfile' on the loc
 	
 Paste the following script in the Dockerfile: 
 
-	# DOCKER-VERSION .....
+    # DOCKER-VERSION .....
 
-	FROM ubuntu:14.04
+    FROM ubuntu:14.04
 
-	# make sure apt is up to date
-	RUN apt-get update
+    # make sure apt is up to date
+    RUN apt-get update
 
-	# install Node.js and npm
-	RUN apt-get install -y nodejs npm git git-core
+    # install Node.js and npm
+    RUN apt-get install -y nodejs npm nodejs-legacy git git-core
 
-	ADD start.sh /tmp/
+    ADD start.sh /tmp/
 
-	RUN chmod +x /tmp/start.sh
+    RUN chmod +x /tmp/start.sh
 
-	CMD ./tmp/start.sh
+    CMD ./tmp/start.sh
+
 	
 Save the content of the file by pressing CTRL-O and exit pressing CTRL-X
 
@@ -204,34 +205,32 @@ Add another file called start.sh. The commands in this script file are not cache
 
 	pico start.sh
 	
-Insert the following snippet in the start.sh file. In this script we will download the sourcecode for our REST API and run it in the Node.js runtime. Note that you could also use git to clone a repository containing the Node.js service code. In case you want to try this replace the GITREPO tag with the GIT repository URL (https://github.com/[name]/[REPO].git) that contains the REST API code for your Node.js service. 
+Insert the following snippet in the start.sh file. Next, setup a Git repo containing the Web Sites Lab server.js file and the package.json in case you extended the sample with some dependencies. Replace the placeholders to match your repo.
 
-	//cd /tmp
+    cd /tmp
 
-	//Uncomment the commented lines in this script to swithc to using Git repos. When you do, comment out the curl command.
-	//# try to remove the repo if it already exists
-	//rm -rf [GITREPO]; true
+    # try to remove the repo if it already exists
+    rm -rf tesselapiservice; true
 
-	curl -o server.js  https://raw.githubusercontent.com/dx-ted-emea/azure-tessel/master/labs/websites/api/server.js
-	
-	//git clone [GITREPO]
-	//cd [GITREPO]
+    git clone https://github.com/[USER NAME]/[REPO NAME].git
 
-	npm install
+    cd tesselapiservice
 
-	node .
+    npm install
+
+    nodejs .
 
 Save the content of the file by pressing CTRL-O and exit pressing CTRL-X.
 
 Run the build process by initiating the Docker 'build' command. Mark the . at the end stating the current directory contains the Dockerfile. The -t option tags the image with a name in which we optionally can include a username for housekeeping and publication to the public image repository called Docker Hub:
 
-	docker build -t myname/tesselapi .
+	docker build -t username/tesselapi .
 	
 The process of building images can take a long time depending on bandwidth available for package downloads and VM performance, but this is a one time procedure. Once we have our base image readty all changes made are put on top and no complete rerun of the build process is needed. Docker uses a very sophisticated system of layering images on top of eachother. The steps in the Dockerfile, for example, each result in a new image being made. An advantage of this is that when you debug a scipt you can start from the last succesfull stript line and continue from there.
 
 Now for 'Le moment suprême' we run the image so we get a container out of it:
 	
-	docker run -p 80:80 myname/tesselapi
+	sudo docker run -d -p 80:80 username/tesselapi
 
 With this last command we provided the ports to be opened. First port is the host port, meaning the port that the host would need use to get to the container, and the second is the container port which the container internally expects to be getting input from.
 
