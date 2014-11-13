@@ -24,12 +24,11 @@ var crypto = require('crypto');
 
 // Event Hubs parameters
 var namespace = 'YourNameSpaceHere';
-var hubname ='YourHubNameHere';
+var hubname = 'YourHubNameHere';
+var deviceName = 'mytessel';
 var eventHubAccessKeyName = 'YourEventHubKeyNameHere';
 var eventHubAccessKey = 'YourSharedAccessKeyTokenHere';
 
-//Device-Id
-var deviceName = 'mytessel';
 
 // Full Event Hub publisher URI
 var eventHubUri = 'https://' + namespace + '.servicebus.windows.net' + '/' + hubname + '/publishers/' + deviceName + '/messages';

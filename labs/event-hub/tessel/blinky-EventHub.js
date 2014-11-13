@@ -32,13 +32,13 @@ console.log('');
 
 var namespace = 'YourNameSpaceHere';
 var hubname ='YourHubNameHere';
-var partitionKey = 'mytessel';
+var deviceName = 'mytessel';
 var eventHubAccessKeyName = 'YourEventHubKeyNameHere';
 var createdSAS = 'YourSharedAccessKeyTokenHere';
 
 console.log('Namespace: ' + namespace);
 console.log('hubname: ' + hubname);
-console.log('partitionKey: ' + partitionKey);
+console.log('publisher: ' + deviceName);
 console.log('eventHubAccessKeyName: ' + eventHubAccessKeyName);
 console.log('SAS Token: ' + createdSAS);
 console.log('----------------------------------------------------------------------');
@@ -52,7 +52,7 @@ var payload = '{\"Temperature\":\"37.0\",\"Humidity\":\"0.4\"}';
 var options = {
   hostname: namespace + '.servicebus.windows.net',
   port: 443,
-  path: '/' + hubname + '/publishers/' + partitionKey + '/messages',
+  path: '/' + hubname + '/publishers/' + deviceName + '/messages',
   method: 'POST',
   headers: {
     'Authorization': createdSAS,
