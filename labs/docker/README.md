@@ -87,10 +87,9 @@ Make sure you are logged into the Azure portal using the account that is coupled
 
 If the browser does not start click [this link] to download it manually.
 
-
 **Optional (Windows OS only):** We can also use the Linux Docker client VM , instead of our local machine, to manage Azure. To do so we need to copy the publish settings file we just downloaded to the Linux VM in Azure. Open a command prompt locally (Windows) and run:
  
-    set PATH=c:\Program Files(x86)\PuTTY
+    set PATH=c:\Program Files(x86) \PuTTY
     
     pscp -i [PATH TO .PPK FILE] [PATH TO PUBLISH SETTINGS FILE]  [USER NAME]@[HOST NAME].cloudapp.net:/home/[USER NAME]/ 
 
