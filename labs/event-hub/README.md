@@ -122,7 +122,9 @@ Now call the EventHub from our Tessel to ingest data. The sample code is located
 * deviceName (this is an identifier for your device)
 * eventHubAccessKeyName (If you created the EventHub with the provided C# code it's: 'EventHubKey')
 
-In order to secure the communication with the EventHub we have to provide a so called "Shared Access Signature Token" in each request from the Tessel to the EventHub. You can create such a "Shared Access Signature Token" with the Node.js application which is provided [tessel](tessel) folder.
+In order to secure the communication with the EventHub we have to provide a so called "Shared Access Signature Token" in each request from the Tessel to the EventHub. You can create such a "Shared Access Signature Token" with a web tool or the Node.js application which is provided [tessel](tessel) folder.
+
+* To generate the SAS token from the web tool go to: http://eventhubssasgenerator.azurewebsites.net/
 
 * Open the file [CreateSASToken.js](tessel/CreateSASToken.js)" and provide the same values that you used in the blinky-EventHub.js for 
 	* namespace
